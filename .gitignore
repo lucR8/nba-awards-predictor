@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.env
+.envrc
+.ipynb_checkpoints
+.cache/
+dist/
+build/
+*.log
+
+# Data / models
+data/processed/*
+models/*.pkl
+!data/raw/*
+!models/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db
