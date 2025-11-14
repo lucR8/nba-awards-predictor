@@ -1,22 +1,46 @@
+# -------------------------
 # Python
+# -------------------------
 __pycache__/
 *.py[cod]
 *.egg-info/
 .venv/
 .env
 .envrc
-.ipynb_checkpoints
+.ipynb_checkpoints/
 .cache/
 dist/
 build/
 *.log
 
-# Data / models
-data/processed/*
+# -------------------------
+# Data — DO NOT TRACK RAW DATA
+# -------------------------
+data/raw/
+data/processed/
+data/cache/
+data/tmp/
+
+# Allow placeholder .gitkeep
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# -------------------------
+# Models
+# -------------------------
 models/*.pkl
-!data/raw/*
+models/*.json
 !models/.gitkeep
 
-# OS
+# -------------------------
+# Private scrapers (never shared)
+# -------------------------
+scripts/fetch_bref_*.py
+scripts/scraper/
+scripts/*scrape*.py
+
+# -------------------------
+# OS files
+# -------------------------
 .DS_Store
 Thumbs.db
