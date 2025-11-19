@@ -1,0 +1,2346 @@
+[
+  {
+    "year": 1996,
+    "category": "player_regular",
+    "name": "shooting",
+    "url": "https://www.basketball-reference.com/leagues/NBA_1996_shooting.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135222.220833
+  },
+  {
+    "year": 1996,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_1996_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135222.2569995
+  },
+  {
+    "year": 1996,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_1996_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135222.2986848
+  },
+  {
+    "year": 1996,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_1996_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135222.3340552
+  },
+  {
+    "year": 1996,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_1996_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135222.3801754
+  },
+  {
+    "year": 1996,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_1996_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135222.4543052
+  },
+  {
+    "year": 1996,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_1996_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135222.4879818
+  },
+  {
+    "year": 1996,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_1996.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135222.5284584
+  },
+  {
+    "year": 1997,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_1997_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135224.574885
+  },
+  {
+    "year": 1997,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_1997_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135224.609647
+  },
+  {
+    "year": 1997,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_1997_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135224.651912
+  },
+  {
+    "year": 1997,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_1997_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135224.6859791
+  },
+  {
+    "year": 1997,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_1997_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135224.7236767
+  },
+  {
+    "year": 1997,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_1997_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135224.7571955
+  },
+  {
+    "year": 1997,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_1997.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135224.813247
+  },
+  {
+    "year": 1998,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_1998_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135226.8557265
+  },
+  {
+    "year": 1998,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_1998_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135226.896181
+  },
+  {
+    "year": 1998,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_1998_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135226.9317114
+  },
+  {
+    "year": 1998,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_1998_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135227.0855014
+  },
+  {
+    "year": 1998,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_1998_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135227.123527
+  },
+  {
+    "year": 1998,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_1998_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135227.174428
+  },
+  {
+    "year": 1998,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_1998.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135227.2145627
+  },
+  {
+    "year": 1999,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_1999_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135229.2616534
+  },
+  {
+    "year": 1999,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_1999_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135229.2971318
+  },
+  {
+    "year": 1999,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_1999_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135229.335707
+  },
+  {
+    "year": 1999,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_1999_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135229.3738146
+  },
+  {
+    "year": 1999,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_1999_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135229.410799
+  },
+  {
+    "year": 1999,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_1999_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135229.4625392
+  },
+  {
+    "year": 1999,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_1999.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135229.5231326
+  },
+  {
+    "year": 2000,
+    "category": "player_regular",
+    "name": "shooting",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2000_shooting.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135231.5669363
+  },
+  {
+    "year": 2000,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2000_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135231.6070457
+  },
+  {
+    "year": 2000,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2000_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135231.6397045
+  },
+  {
+    "year": 2000,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2000_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135231.6951127
+  },
+  {
+    "year": 2000,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2000_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135231.7818456
+  },
+  {
+    "year": 2000,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2000_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135231.8204515
+  },
+  {
+    "year": 2000,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2000_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135231.8662634
+  },
+  {
+    "year": 2000,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2000.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135231.905504
+  },
+  {
+    "year": 2001,
+    "category": "player_regular",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2001_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135233.9482305
+  },
+  {
+    "year": 2001,
+    "category": "player_regular",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2001_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135234.0006838
+  },
+  {
+    "year": 2001,
+    "category": "player_regular",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2001_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135234.0422199
+  },
+  {
+    "year": 2001,
+    "category": "player_regular",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2001_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135234.0842571
+  },
+  {
+    "year": 2001,
+    "category": "player_regular",
+    "name": "per_minute",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2001_per_minute.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135234.131031
+  },
+  {
+    "year": 2001,
+    "category": "player_regular",
+    "name": "shooting",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2001_shooting.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135234.1794226
+  },
+  {
+    "year": 2001,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2001_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135234.216804
+  },
+  {
+    "year": 2001,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2001_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135234.2527678
+  },
+  {
+    "year": 2001,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2001_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135234.293136
+  },
+  {
+    "year": 2001,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2001_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135234.3507035
+  },
+  {
+    "year": 2001,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2001_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135234.3918984
+  },
+  {
+    "year": 2001,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2001_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135234.424365
+  },
+  {
+    "year": 2001,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2001.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135234.4606977
+  },
+  {
+    "year": 2002,
+    "category": "player_regular",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2002_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135236.500915
+  },
+  {
+    "year": 2002,
+    "category": "player_regular",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2002_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135236.5372868
+  },
+  {
+    "year": 2002,
+    "category": "player_regular",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2002_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135236.5827932
+  },
+  {
+    "year": 2002,
+    "category": "player_regular",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2002_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135236.6301773
+  },
+  {
+    "year": 2002,
+    "category": "player_regular",
+    "name": "per_minute",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2002_per_minute.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135236.6642394
+  },
+  {
+    "year": 2002,
+    "category": "player_regular",
+    "name": "shooting",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2002_shooting.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135236.7165034
+  },
+  {
+    "year": 2002,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2002_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135236.75341
+  },
+  {
+    "year": 2002,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2002_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135236.8016322
+  },
+  {
+    "year": 2002,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2002_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135236.8530746
+  },
+  {
+    "year": 2002,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2002_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135236.8908272
+  },
+  {
+    "year": 2002,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2002_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135236.943402
+  },
+  {
+    "year": 2002,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2002_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135236.979319
+  },
+  {
+    "year": 2002,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2002.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135237.0187812
+  },
+  {
+    "year": 2003,
+    "category": "player_regular",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2003_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135239.0572145
+  },
+  {
+    "year": 2003,
+    "category": "player_regular",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2003_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135239.106415
+  },
+  {
+    "year": 2003,
+    "category": "player_regular",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2003_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135239.1508129
+  },
+  {
+    "year": 2003,
+    "category": "player_regular",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2003_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135239.1919284
+  },
+  {
+    "year": 2003,
+    "category": "player_regular",
+    "name": "per_minute",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2003_per_minute.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135239.2284143
+  },
+  {
+    "year": 2003,
+    "category": "player_regular",
+    "name": "shooting",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2003_shooting.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135239.2814434
+  },
+  {
+    "year": 2003,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2003_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135239.3129983
+  },
+  {
+    "year": 2003,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2003_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135239.3958185
+  },
+  {
+    "year": 2003,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2003_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135239.4386826
+  },
+  {
+    "year": 2003,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2003_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135239.4719026
+  },
+  {
+    "year": 2003,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2003_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135239.523799
+  },
+  {
+    "year": 2003,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2003_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135239.5587866
+  },
+  {
+    "year": 2003,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2003.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135239.597422
+  },
+  {
+    "year": 2004,
+    "category": "player_regular",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2004_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135241.6485307
+  },
+  {
+    "year": 2004,
+    "category": "player_regular",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2004_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135241.6863346
+  },
+  {
+    "year": 2004,
+    "category": "player_regular",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2004_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135241.7200718
+  },
+  {
+    "year": 2004,
+    "category": "player_regular",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2004_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135241.7573986
+  },
+  {
+    "year": 2004,
+    "category": "player_regular",
+    "name": "per_minute",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2004_per_minute.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135241.7939873
+  },
+  {
+    "year": 2004,
+    "category": "player_regular",
+    "name": "shooting",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2004_shooting.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135241.8328335
+  },
+  {
+    "year": 2004,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2004_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135241.8706298
+  },
+  {
+    "year": 2004,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2004_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135241.9029164
+  },
+  {
+    "year": 2004,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2004_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135241.942204
+  },
+  {
+    "year": 2004,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2004_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135241.9836674
+  },
+  {
+    "year": 2004,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2004_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135242.0170896
+  },
+  {
+    "year": 2004,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2004_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135242.0571465
+  },
+  {
+    "year": 2004,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2004.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135242.1023328
+  },
+  {
+    "year": 2005,
+    "category": "player_regular",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2005_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135244.1364675
+  },
+  {
+    "year": 2005,
+    "category": "player_regular",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2005_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135244.1690936
+  },
+  {
+    "year": 2005,
+    "category": "player_regular",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2005_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135244.2289317
+  },
+  {
+    "year": 2005,
+    "category": "player_regular",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2005_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135244.2905781
+  },
+  {
+    "year": 2005,
+    "category": "player_regular",
+    "name": "per_minute",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2005_per_minute.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135244.3242714
+  },
+  {
+    "year": 2005,
+    "category": "player_regular",
+    "name": "shooting",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2005_shooting.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135244.3668406
+  },
+  {
+    "year": 2005,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2005_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135244.4035394
+  },
+  {
+    "year": 2005,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2005_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135244.4481637
+  },
+  {
+    "year": 2005,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2005_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135244.4953837
+  },
+  {
+    "year": 2005,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2005_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135244.5334802
+  },
+  {
+    "year": 2005,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2005_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135244.583759
+  },
+  {
+    "year": 2005,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2005_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135244.6244087
+  },
+  {
+    "year": 2005,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2005.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135244.6604357
+  },
+  {
+    "year": 2006,
+    "category": "player_regular",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2006_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135246.6987922
+  },
+  {
+    "year": 2006,
+    "category": "player_regular",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2006_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135246.7377849
+  },
+  {
+    "year": 2006,
+    "category": "player_regular",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2006_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135246.7952914
+  },
+  {
+    "year": 2006,
+    "category": "player_regular",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2006_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135246.8281958
+  },
+  {
+    "year": 2006,
+    "category": "player_regular",
+    "name": "per_minute",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2006_per_minute.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135246.863605
+  },
+  {
+    "year": 2006,
+    "category": "player_regular",
+    "name": "shooting",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2006_shooting.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135246.8989341
+  },
+  {
+    "year": 2006,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2006_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135246.9337962
+  },
+  {
+    "year": 2006,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2006_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135246.9700224
+  },
+  {
+    "year": 2006,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2006_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135247.0063248
+  },
+  {
+    "year": 2006,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2006_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135247.0443902
+  },
+  {
+    "year": 2006,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2006_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135247.0781775
+  },
+  {
+    "year": 2006,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2006_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135247.114136
+  },
+  {
+    "year": 2006,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2006.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135247.149897
+  },
+  {
+    "year": 2007,
+    "category": "player_regular",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2007_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135249.1960566
+  },
+  {
+    "year": 2007,
+    "category": "player_regular",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2007_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135249.2662323
+  },
+  {
+    "year": 2007,
+    "category": "player_regular",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2007_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135249.32756
+  },
+  {
+    "year": 2007,
+    "category": "player_regular",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2007_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135249.378615
+  },
+  {
+    "year": 2007,
+    "category": "player_regular",
+    "name": "per_minute",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2007_per_minute.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135249.4148235
+  },
+  {
+    "year": 2007,
+    "category": "player_regular",
+    "name": "shooting",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2007_shooting.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135249.448249
+  },
+  {
+    "year": 2007,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2007_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135249.486467
+  },
+  {
+    "year": 2007,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2007_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135249.5278378
+  },
+  {
+    "year": 2007,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2007_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135249.5662937
+  },
+  {
+    "year": 2007,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2007_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135249.6043618
+  },
+  {
+    "year": 2007,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2007_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135249.6434276
+  },
+  {
+    "year": 2007,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2007_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135249.688016
+  },
+  {
+    "year": 2007,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2007.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135249.7244043
+  },
+  {
+    "year": 2008,
+    "category": "player_regular",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2008_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135251.763568
+  },
+  {
+    "year": 2008,
+    "category": "player_regular",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2008_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135251.811227
+  },
+  {
+    "year": 2008,
+    "category": "player_regular",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2008_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135251.8629577
+  },
+  {
+    "year": 2008,
+    "category": "player_regular",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2008_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135251.90322
+  },
+  {
+    "year": 2008,
+    "category": "player_regular",
+    "name": "per_minute",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2008_per_minute.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135251.9375494
+  },
+  {
+    "year": 2008,
+    "category": "player_regular",
+    "name": "shooting",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2008_shooting.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135251.9787395
+  },
+  {
+    "year": 2008,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2008_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135252.0356143
+  },
+  {
+    "year": 2008,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2008_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135252.082848
+  },
+  {
+    "year": 2008,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2008_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135252.1174347
+  },
+  {
+    "year": 2008,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2008_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135252.152299
+  },
+  {
+    "year": 2008,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2008_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135252.1858575
+  },
+  {
+    "year": 2008,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2008_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135252.2497032
+  },
+  {
+    "year": 2008,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2008.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135252.3321216
+  },
+  {
+    "year": 2009,
+    "category": "player_regular",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2009_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135254.368062
+  },
+  {
+    "year": 2009,
+    "category": "player_regular",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2009_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135254.4072955
+  },
+  {
+    "year": 2009,
+    "category": "player_regular",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2009_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135254.4599454
+  },
+  {
+    "year": 2009,
+    "category": "player_regular",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2009_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135254.4955492
+  },
+  {
+    "year": 2009,
+    "category": "player_regular",
+    "name": "per_minute",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2009_per_minute.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135254.5361092
+  },
+  {
+    "year": 2009,
+    "category": "player_regular",
+    "name": "shooting",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2009_shooting.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135254.5833828
+  },
+  {
+    "year": 2009,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2009_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135254.6384094
+  },
+  {
+    "year": 2009,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2009_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135254.6754198
+  },
+  {
+    "year": 2009,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2009_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135254.713363
+  },
+  {
+    "year": 2009,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2009_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135254.7503633
+  },
+  {
+    "year": 2009,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2009_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135254.7851062
+  },
+  {
+    "year": 2009,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2009_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135254.822276
+  },
+  {
+    "year": 2009,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2009.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135254.871802
+  },
+  {
+    "year": 2010,
+    "category": "player_regular",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2010_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135256.9152303
+  },
+  {
+    "year": 2010,
+    "category": "player_regular",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2010_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135256.9527872
+  },
+  {
+    "year": 2010,
+    "category": "player_regular",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2010_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135256.9927332
+  },
+  {
+    "year": 2010,
+    "category": "player_regular",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2010_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135257.0325089
+  },
+  {
+    "year": 2010,
+    "category": "player_regular",
+    "name": "per_minute",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2010_per_minute.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135257.062256
+  },
+  {
+    "year": 2010,
+    "category": "player_regular",
+    "name": "shooting",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2010_shooting.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135257.0951831
+  },
+  {
+    "year": 2010,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2010_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135257.1637146
+  },
+  {
+    "year": 2010,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2010_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135257.2330298
+  },
+  {
+    "year": 2010,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2010_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135257.270235
+  },
+  {
+    "year": 2010,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2010_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135257.31442
+  },
+  {
+    "year": 2010,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2010_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135257.3606234
+  },
+  {
+    "year": 2010,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2010_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135257.4046657
+  },
+  {
+    "year": 2010,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2010.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135257.4439743
+  },
+  {
+    "year": 2011,
+    "category": "player_regular",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2011_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135259.4876955
+  },
+  {
+    "year": 2011,
+    "category": "player_regular",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2011_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135259.543492
+  },
+  {
+    "year": 2011,
+    "category": "player_regular",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2011_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135259.5766387
+  },
+  {
+    "year": 2011,
+    "category": "player_regular",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2011_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135259.6097617
+  },
+  {
+    "year": 2011,
+    "category": "player_regular",
+    "name": "per_minute",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2011_per_minute.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135259.649156
+  },
+  {
+    "year": 2011,
+    "category": "player_regular",
+    "name": "shooting",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2011_shooting.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135259.6921813
+  },
+  {
+    "year": 2011,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2011_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135259.733697
+  },
+  {
+    "year": 2011,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2011_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135259.770227
+  },
+  {
+    "year": 2011,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2011_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135259.8034177
+  },
+  {
+    "year": 2011,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2011_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135259.838408
+  },
+  {
+    "year": 2011,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2011_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135259.8996031
+  },
+  {
+    "year": 2011,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2011_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135259.936602
+  },
+  {
+    "year": 2011,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2011.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135259.9764526
+  },
+  {
+    "year": 2012,
+    "category": "player_regular",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2012_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135262.0265846
+  },
+  {
+    "year": 2012,
+    "category": "player_regular",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2012_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135262.0605044
+  },
+  {
+    "year": 2012,
+    "category": "player_regular",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2012_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135262.0943713
+  },
+  {
+    "year": 2012,
+    "category": "player_regular",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2012_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135262.133473
+  },
+  {
+    "year": 2012,
+    "category": "player_regular",
+    "name": "per_minute",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2012_per_minute.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135262.1663785
+  },
+  {
+    "year": 2012,
+    "category": "player_regular",
+    "name": "shooting",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2012_shooting.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135262.2096379
+  },
+  {
+    "year": 2012,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2012_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135262.2579315
+  },
+  {
+    "year": 2012,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2012_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135262.2918825
+  },
+  {
+    "year": 2012,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2012_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135262.340998
+  },
+  {
+    "year": 2012,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2012_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135262.3757527
+  },
+  {
+    "year": 2012,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2012_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135262.424486
+  },
+  {
+    "year": 2012,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2012_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135262.478678
+  },
+  {
+    "year": 2012,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2012.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135262.5154915
+  },
+  {
+    "year": 2013,
+    "category": "player_regular",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2013_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135264.5507102
+  },
+  {
+    "year": 2013,
+    "category": "player_regular",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2013_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135264.5854669
+  },
+  {
+    "year": 2013,
+    "category": "player_regular",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2013_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135264.6235101
+  },
+  {
+    "year": 2013,
+    "category": "player_regular",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2013_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135264.656443
+  },
+  {
+    "year": 2013,
+    "category": "player_regular",
+    "name": "per_minute",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2013_per_minute.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135264.6992464
+  },
+  {
+    "year": 2013,
+    "category": "player_regular",
+    "name": "shooting",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2013_shooting.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135264.7393599
+  },
+  {
+    "year": 2013,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2013_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135264.7750468
+  },
+  {
+    "year": 2013,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2013_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135264.8150992
+  },
+  {
+    "year": 2013,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2013_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135264.8861685
+  },
+  {
+    "year": 2013,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2013_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135264.9276662
+  },
+  {
+    "year": 2013,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2013_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135264.966877
+  },
+  {
+    "year": 2013,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2013_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135265.0023785
+  },
+  {
+    "year": 2013,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2013.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135265.052497
+  },
+  {
+    "year": 2014,
+    "category": "player_regular",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2014_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135267.090334
+  },
+  {
+    "year": 2014,
+    "category": "player_regular",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2014_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135267.1394992
+  },
+  {
+    "year": 2014,
+    "category": "player_regular",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2014_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135267.187712
+  },
+  {
+    "year": 2014,
+    "category": "player_regular",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2014_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135267.2318068
+  },
+  {
+    "year": 2014,
+    "category": "player_regular",
+    "name": "per_minute",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2014_per_minute.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135267.2681427
+  },
+  {
+    "year": 2014,
+    "category": "player_regular",
+    "name": "shooting",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2014_shooting.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135267.3287368
+  },
+  {
+    "year": 2014,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2014_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135267.3787684
+  },
+  {
+    "year": 2014,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2014_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135267.4271843
+  },
+  {
+    "year": 2014,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2014_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135267.4638565
+  },
+  {
+    "year": 2014,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2014_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135267.504439
+  },
+  {
+    "year": 2014,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2014_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135267.5496087
+  },
+  {
+    "year": 2014,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2014_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135267.6089528
+  },
+  {
+    "year": 2014,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2014.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135267.641765
+  },
+  {
+    "year": 2015,
+    "category": "player_regular",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2015_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135269.6756835
+  },
+  {
+    "year": 2015,
+    "category": "player_regular",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2015_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135269.7085214
+  },
+  {
+    "year": 2015,
+    "category": "player_regular",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2015_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135269.7476475
+  },
+  {
+    "year": 2015,
+    "category": "player_regular",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2015_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135269.79616
+  },
+  {
+    "year": 2015,
+    "category": "player_regular",
+    "name": "per_minute",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2015_per_minute.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135269.8502433
+  },
+  {
+    "year": 2015,
+    "category": "player_regular",
+    "name": "shooting",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2015_shooting.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135269.9012983
+  },
+  {
+    "year": 2015,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2015_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135269.9452736
+  },
+  {
+    "year": 2015,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2015_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135270.0003643
+  },
+  {
+    "year": 2015,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2015_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135270.0494812
+  },
+  {
+    "year": 2015,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2015_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135270.0930338
+  },
+  {
+    "year": 2015,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2015_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135270.1309526
+  },
+  {
+    "year": 2015,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2015_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135270.1821983
+  },
+  {
+    "year": 2015,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2015.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135270.233542
+  },
+  {
+    "year": 2016,
+    "category": "player_regular",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2016_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135272.2698596
+  },
+  {
+    "year": 2016,
+    "category": "player_regular",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2016_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135272.3239937
+  },
+  {
+    "year": 2016,
+    "category": "player_regular",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2016_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135272.3593156
+  },
+  {
+    "year": 2016,
+    "category": "player_regular",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2016_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135272.4016964
+  },
+  {
+    "year": 2016,
+    "category": "player_regular",
+    "name": "per_minute",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2016_per_minute.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135272.4421504
+  },
+  {
+    "year": 2016,
+    "category": "player_regular",
+    "name": "shooting",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2016_shooting.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135272.4780333
+  },
+  {
+    "year": 2016,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2016_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135272.5126524
+  },
+  {
+    "year": 2016,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2016_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135272.566168
+  },
+  {
+    "year": 2016,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2016_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135272.6056442
+  },
+  {
+    "year": 2016,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2016_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135272.650596
+  },
+  {
+    "year": 2016,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2016_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135272.683488
+  },
+  {
+    "year": 2016,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2016_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135272.7297509
+  },
+  {
+    "year": 2016,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2016.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135272.765894
+  },
+  {
+    "year": 2017,
+    "category": "player_regular",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2017_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135274.7990327
+  },
+  {
+    "year": 2017,
+    "category": "player_regular",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2017_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135274.8391566
+  },
+  {
+    "year": 2017,
+    "category": "player_regular",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2017_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135274.8856037
+  },
+  {
+    "year": 2017,
+    "category": "player_regular",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2017_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135274.9250987
+  },
+  {
+    "year": 2017,
+    "category": "player_regular",
+    "name": "per_minute",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2017_per_minute.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135274.9657593
+  },
+  {
+    "year": 2017,
+    "category": "player_regular",
+    "name": "shooting",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2017_shooting.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135275.008414
+  },
+  {
+    "year": 2017,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2017_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135275.0628185
+  },
+  {
+    "year": 2017,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2017_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135275.0990055
+  },
+  {
+    "year": 2017,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2017_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135275.135753
+  },
+  {
+    "year": 2017,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2017_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135275.18316
+  },
+  {
+    "year": 2017,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2017_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135275.221055
+  },
+  {
+    "year": 2017,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2017_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135275.272377
+  },
+  {
+    "year": 2017,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2017.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135275.307355
+  },
+  {
+    "year": 2018,
+    "category": "player_regular",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2018_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135277.3466394
+  },
+  {
+    "year": 2018,
+    "category": "player_regular",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2018_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135277.4034522
+  },
+  {
+    "year": 2018,
+    "category": "player_regular",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2018_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135277.4476798
+  },
+  {
+    "year": 2018,
+    "category": "player_regular",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2018_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135277.493089
+  },
+  {
+    "year": 2018,
+    "category": "player_regular",
+    "name": "per_minute",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2018_per_minute.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135277.54783
+  },
+  {
+    "year": 2018,
+    "category": "player_regular",
+    "name": "shooting",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2018_shooting.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135277.5788856
+  },
+  {
+    "year": 2018,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2018_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135277.61724
+  },
+  {
+    "year": 2018,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2018_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135277.6593106
+  },
+  {
+    "year": 2018,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2018_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135277.6996155
+  },
+  {
+    "year": 2018,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2018_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135277.7388496
+  },
+  {
+    "year": 2018,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2018_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135277.780695
+  },
+  {
+    "year": 2018,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2018_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135277.815487
+  },
+  {
+    "year": 2018,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2018.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135277.8535783
+  },
+  {
+    "year": 2019,
+    "category": "player_regular",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2019_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135279.9047062
+  },
+  {
+    "year": 2019,
+    "category": "player_regular",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2019_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135279.9404776
+  },
+  {
+    "year": 2019,
+    "category": "player_regular",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2019_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135279.9800017
+  },
+  {
+    "year": 2019,
+    "category": "player_regular",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2019_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135280.0160756
+  },
+  {
+    "year": 2019,
+    "category": "player_regular",
+    "name": "per_minute",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2019_per_minute.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135280.0510907
+  },
+  {
+    "year": 2019,
+    "category": "player_regular",
+    "name": "shooting",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2019_shooting.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135280.1057413
+  },
+  {
+    "year": 2019,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2019_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135280.1616447
+  },
+  {
+    "year": 2019,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2019_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135280.1978178
+  },
+  {
+    "year": 2019,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2019_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135280.2340314
+  },
+  {
+    "year": 2019,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2019_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135280.2793314
+  },
+  {
+    "year": 2019,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2019_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135280.3151562
+  },
+  {
+    "year": 2019,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2019_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135280.3550644
+  },
+  {
+    "year": 2019,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2019.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135280.394174
+  },
+  {
+    "year": 2020,
+    "category": "player_regular",
+    "name": "per_minute",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2020_per_minute.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135282.4438517
+  },
+  {
+    "year": 2020,
+    "category": "player_regular",
+    "name": "shooting",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2020_shooting.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135282.4892654
+  },
+  {
+    "year": 2020,
+    "category": "player_regular",
+    "name": "misc_stats",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2020_misc_stats.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135282.5351818
+  },
+  {
+    "year": 2020,
+    "category": "player_playoffs",
+    "name": "per_game",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2020_per_game.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135282.5689394
+  },
+  {
+    "year": 2020,
+    "category": "player_playoffs",
+    "name": "advanced",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2020_advanced.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135282.607432
+  },
+  {
+    "year": 2020,
+    "category": "player_playoffs",
+    "name": "per_poss",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2020_per_poss.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135282.651054
+  },
+  {
+    "year": 2020,
+    "category": "player_playoffs",
+    "name": "totals",
+    "url": "https://www.basketball-reference.com/playoffs/NBA_2020_totals.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135282.6960258
+  },
+  {
+    "year": 2020,
+    "category": "rookies",
+    "name": "rookies",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2020_rookies.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135282.7391987
+  },
+  {
+    "year": 2020,
+    "category": "season_summary",
+    "name": "all",
+    "url": "https://www.basketball-reference.com/leagues/NBA_2020.html",
+    "reason": "HTTP 429 Too Many Requests",
+    "timestamp": 1763135282.7809577
+  }
+]

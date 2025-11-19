@@ -12,3 +12,5 @@ nba_api>=1.5
 pre-commit>=3.5
 flake8>=7.0
 pytest>=8.0
+cloudscraper>=1.2.71
+html5lib>=1.17.0
