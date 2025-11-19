@@ -11,12 +11,32 @@ dist/
 build/
 *.log
 
-# Data / models
-data/processed/*
-models/*.pkl
-!data/raw/*
+# Data
+data/raw/**        # ignore tout
+!data/raw/.gitkeep # sauf le gitkeep
+
+data/processed/**  
+!data/processed/.gitkeep
+
+data/logs/**       # logs non commités
+fetch_logs/**
+
+# Models
+models/*.pkl       
 !models/.gitkeep
+
+# Scripts (scrapers privés)
+scripts/**
 
 # OS
 .DS_Store
 Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Python tooling
+.pytest_cache/
+.coverage
+htmlcov/
