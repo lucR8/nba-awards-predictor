@@ -12,8 +12,8 @@ build/
 *.log
 
 # Data
-data/raw/**        # ignore tout
-!data/raw/.gitkeep # sauf le gitkeep
+data/raw/**        
+!data/raw/.gitkeep 
 
 data/processed/**  
 !data/processed/.gitkeep
@@ -21,12 +21,9 @@ data/processed/**
 data/logs/**       # logs non commités
 fetch_logs/**
 
-# Models
-models/*.pkl       
-!models/.gitkeep
-
 # Scripts (scrapers privés)
-scripts/**
+scripts/fetch
+scripts/build
 
 # OS
 .DS_Store
