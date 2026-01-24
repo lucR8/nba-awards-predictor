@@ -1,0 +1,17 @@
+{
+  "award": "roy",
+  "train_end": 2018,
+  "val_end": 2021,
+  "val_aucpr": 0.8333333333333333,
+  "val_top1": 1.0,
+  "val_mrr": 1.0,
+  "val_top3": 1.0,
+  "val_top5": 1.0,
+  "val_top10": 1.0,
+  "test_aucpr": 0.6388888888888888,
+  "test_top1": 0.6666666666666666,
+  "test_mrr": 0.8333333333333334,
+  "test_top3": 1.0,
+  "test_top5": 1.0,
+  "test_top10": 1.0
+}
