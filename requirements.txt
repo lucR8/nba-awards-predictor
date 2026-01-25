@@ -1,25 +1,25 @@
-pandas>=2.2
+# Core scientific stack
 numpy>=1.26
+pandas>=2.2
 scikit-learn>=1.4
-xgboost>=2.0
-lightgbm>=4.3
-shap>=0.45
-matplotlib>=3.8
-plotly>=5.24
-streamlit>=1.38
-pyyaml>=6.0
-nba_api>=1.5
-pre-commit>=3.5
-flake8>=7.0
-pytest>=8.0
-cloudscraper>=1.2.71
-html5lib>=1.1
-Unidecode>=1.4.0
+
+# Data handling & formats
 pyarrow>=22.0.0
-rapidfuzz>=3.14.3
 openpyxl>=3.1.5
-playwright>=1.56.0
-beautifulsoup4>=4.12
-lxml>=5.2
-ipykernel>=6.28.0
+
+# Text & entity resolution
+Unidecode>=1.4.0
+rapidfuzz>=3.14.3
+
+# Plotting & reporting
+matplotlib>=3.8
 seaborn>=0.13.2
+
+# Utilities
+pyyaml>=6.0
+
+# Testing
+pytest>=8.0
+
+#notebook environment
+ipykernel>=6.25.2

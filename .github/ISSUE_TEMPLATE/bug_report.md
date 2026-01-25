@@ -1,38 +1,49 @@
 ---
 name: Bug Report
-about: Signaler un bug dans le projet
-title: "[BUG] Titre descriptif"
+about: Report a bug or unexpected behavior in the project
+title: "[BUG] Short descriptive title"
 labels: bug
-assignees: ''
+assignees: ""
 ---
 
-## 🐛 Description du bug
-Décrivez clairement le problème rencontré.
+## 🐛 Bug description
+Clearly describe the issue you encountered.
+
 ---
 
-## 🔁 Étapes pour reproduire
-1. …
-2. …
-3. …
+## 🔁 Steps to reproduce
+Provide the minimal steps required to reproduce the bug:
+1. ...
+2. ...
+3. ...
+
 ---
 
-## 🧪 Comportement attendu
-Décrivez ce qui aurait dû se passer.
+## ✅ Expected behavior
+Describe what you expected to happen.
+
 ---
 
-## 📋 Logs / Erreurs
-Copiez-collez ici les messages d’erreur ou logs pertinents :  
-<logs> ```
+## ❌ Actual behavior
+Describe what actually happened.
+
 ---
 
-## 💻 Environnement
-- OS :
-- Python version :
-- Commande exécutée :
+## 📋 Logs / error messages
+Please paste relevant logs or error messages here (if any):
+```text
+<logs>
+```
+
 ---
 
-## 📎 Pièces jointes
-Screenshots, extraits de dataset, etc.
+## 💻 Environment
+- Operating system:
+- Python version:
+- Command executed:
+- Git commit / branch:
+
 ---
 
-Merci pour la contribution !
+## 📎 Additional context
+Screenshots, figures, stack traces, or dataset excerpts that may help diagnose the issue.

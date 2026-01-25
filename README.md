@@ -1,148 +1,164 @@
-# 🏀 NBA Awards Predictor — MVP / DPOY / ROY / SMOY / MIP  
-### Data Engineering & Machine Learning Project
+# 🏀 NBA Awards Predictor  
+### End-to-End Data Engineering & Machine Learning Pipeline
 
-![Python](https://img.shields.io/badge/Python-3.11-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
-![CI](https://img.shields.io/badge/CI-GitHub%20Actions-brightgreen)
-![Reproducibility](https://img.shields.io/badge/Reproducibility-Guaranteed-blue)
-![Data%20Engineering](https://img.shields.io/badge/Data%20Engineering-Core-orange)
-![ML](https://img.shields.io/badge/Machine%20Learning-Ranking-purple)
+This repository contains a **fully reproducible, script-driven pipeline** to predict NBA individual awards  
+(**MVP, DPOY, ROY, SMOY, MIP**) using historical multi-source data and season-aware ranking models.
 
-> **End-to-end Data Engineering & Machine Learning project** focused on predicting NBA individual awards  
-> (MVP, Defensive Player of the Year, Rookie of the Year, Sixth Man, Most Improved Player)  
-> using historical multi-source data, robust entity resolution, and season-aware ranking models.
+The project is designed at **master / research level**, with strong emphasis on:
+- data engineering realism,
+- temporal consistency,
+- auditability and leakage prevention,
+- clear separation between exploration and production pipelines.
 
 ---
 
-## 🎯 Project goals
+## 🎯 Project overview
 
-The main objective of this project is to design a **robust, reproducible and auditable pipeline** able to:
+The goal of this project is to:
 
-- Consolidate **historical NBA player data (1996 → 2025)** from heterogeneous sources
-- Solve a **multi-source entity resolution problem** without a shared unique identifier
-- Train and evaluate **season-aware ranking models** for multiple NBA awards
-- Analyze **model limitations**, leakage risks, and narrative-driven failure cases
-- Prepare a **future-season prediction workflow** (no labels available)
+- Consolidate NBA player data from **1996 to 2025**
+- Solve a **multi-source entity resolution** problem (no shared player ID)
+- Build **award-specific datasets** with explicit domain constraints
+- Train **season-aware ranking models**
+- Evaluate models with ranking-oriented metrics
+- Support **future-season inference** (no labels available)
 
-This project deliberately focuses on **real-world constraints**:
-partial data, temporal consistency, imbalanced targets, and award-specific business rules.
+This project intentionally mirrors real-world constraints:
+- strong label imbalance (especially MVP),
+- partial observability (defensive impact),
+- narrative-driven outcomes,
+- evolving statistical definitions across eras.
 
 ---
 
 ## 📦 Data sources
 
-### Primary source
 - **Basketball-Reference**
-  - Regular season & playoffs
-  - Tables:
-    - `per_game`, `totals`, `per_36`, `per_100`
-    - `advanced`, `shooting`, `adjusted_shooting`
-  - **Intra-season percentiles** computed to ensure inter-era comparability
+  - Regular season, playoffs
+  - Season-level percentiles
+- External impact metrics:
+  - RAPTOR
+  - LEBRON
+  - MAMBA
+- Player biographical attributes (age, height, weight, draft, country)
 
-### External data
-- Player biographical data (age, height, weight, country, draft, position)
-- Advanced impact metrics:
-  - **RAPTOR**
-  - **LEBRON**
-  - **MAMBA**
-
-⚠️ No universal player ID exists across sources →  
-**safe name normalization + fuzzy matching + temporal guards** are used.
+⚠️ No universal player identifier exists across sources.  
+Robust name normalization, fuzzy matching, and temporal guards are applied throughout the pipeline.
 
 ---
 
-## 🏗️ Data engineering pipeline
+## 🏗️ How to run the full pipeline (recommended)
 
-The full build pipeline is **CLI-driven, idempotent, and fully logged**:
+The entire pipeline can be executed from **a single entry point**: `run_all.py`.
+
+This script orchestrates:
+1. data fetching,
+2. dataset construction,
+3. model training,
+4. leakage checks,
+5. season prediction,
+6. offline evaluation,
+7. figure generation.
+
+### ▶️ Full run (default)
 
 ```bash
-python -m scripts.build.players.run_all --start 1996 --end 2025
+python run_all.py --year 2026 --evaluate --plot
 ```
 
-### Pipeline steps
-1. **Basketball-Reference build**
-   - Regular season + playoffs
-   - Percentile computation (season-level)
-2. **Bio merge**
-   - Safe joins with coverage reports  
-   - Outputs:
-     - `all_years_with_bio.parquet`
-     - `bio_merge_report.xlsx`
-3. **External metrics merge**
-   - Temporal validation (no look-ahead)
-   - Outputs:
-     - `all_years_enriched.parquet`
-     - `metric_merge_report.xlsx`
-4. **Assertions, logs, and audit artifacts** at each critical step
+This will:
+- fetch and build the target season (2026),
+- train models on historical data,
+- run leakage checks,
+- generate Top-K predictions per award,
+- compute offline evaluation metrics,
+- generate plots for the report.
 
-The pipeline guarantees:
-- No season leakage
-- Full traceability
-- Reproducible builds
+### 🔧 Common options
+
+```bash
+# Skip data fetching (if already done)
+python run_all.py --skip-fetch --skip-build
+
+# Train only (no prediction)
+python run_all.py --skip-predict
+
+# Prediction only (models already trained)
+python run_all.py --skip-fetch --skip-build --skip-train
+
+# Control validation / test horizon
+python run_all.py --val-years 2 --test-years 3
+
+# Strict leakage detection
+python run_all.py --leakage-strict
+```
+
+### 📂 Outputs
+
+- Predictions:
+  ```text
+  data/target/<year>/asof_*/predictions/
+  ```
+
+- Evaluation artifacts:
+  ```text
+  reports/model_eval/
+  ├── metrics_by_award.csv
+  └── plots/
+  ```
 
 ---
 
-## 📊 Notebooks & analysis workflow
+## 🧠 Modeling strategy
 
-The project is structured around **sequential, responsibility-driven notebooks**:
+The task is framed as a **ranking problem**, not pure classification.
 
-| Notebook | Purpose |
-|--------|--------|
-| `01_exploration.ipynb` | Exploratory analysis (read-only) |
-| `02_build_df_clean.ipynb` | Label creation, feature derivation, audits |
-| `03_build_feature_matrices.ipynb` | Numerical matrices (era-aware) |
-| `04_award_datasets.ipynb` | Award-specific datasets & eligibility |
-| `05_modeling_logreg_baseline.ipynb` | Logistic ranking baseline |
-| `06_modeling_tree_models.ipynb` | Tree-based models (GBDT) |
-| `07_error_analysis_audit.ipynb` | Cross-award audit & failure analysis |
+Each award has explicit eligibility rules:
 
-All splits are **time-aware** and evaluated at the **season level**.
+- **MVP**: full population, extreme imbalance
+- **DPOY**: defensive metrics, partial observability
+- **ROY**: rookies only, no lagged features
+- **SMOY**: bench role constraint
+- **MIP**: year-over-year dynamics (`prev_*`, `delta_*` features)
 
----
-
-## 🧠 Award-specific logic
-
-Each award is modeled with **distinct business rules**:
-
-- **ROY**: rookies only, no year-over-year features
-- **SMOY**: bench role constraint (games started vs played)
-- **DPOY**: defensive-focused metrics, known observability limits
-- **MIP**: year-over-year dynamics (high variance)
-- **MVP**:
-  - full population
-  - extreme class imbalance
-  - strong narrative component
+Models are trained with **strict temporal splits** and evaluated on their ability to rank the true winner.
 
 ---
 
 ## 🧪 Evaluation methodology
 
-The task is framed as a **ranking problem**, not pure classification.
+Primary metrics:
+- Mean Reciprocal Rank (MRR)
+- Top-K accuracy (Top-1, Top-5)
+- Mean winner rank
 
-Main metrics:
-- **MRR (Mean Reciprocal Rank)**
-- **Top-K hit rate** (Top-1, Top-3, Top-5, Top-10)
-- Winner **median / worst rank** across seasons
+These metrics directly reflect real voting dynamics:
+> *How high does the true winner appear in the ranked candidate list?*
 
-This evaluation reflects real voting dynamics:
-> *“How high does the true winner appear in the ranked candidate list?”*
+Learning curves, hyperparameter sweeps, and feature ablation studies are available for deeper analysis.
 
 ---
 
-## 🔍 Model comparison & audit
+## 📓 Understanding the notebooks (optional)
 
-A dedicated audit compares **baseline vs tree-based models**:
+Notebooks are provided **only for exploration and diagnostics**.
 
-Key findings:
-- Tree models improve performance on **MVP and DPOY**
-- No benefit (or degradation) on **SMOY and MIP**
-- **ROY** shows split-dependent sensitivity (small cohorts)
-- Near-perfect MVP scores require **cautious interpretation**
+They are **not required** to run the pipeline.
 
-Worst-case season analysis highlights:
-- narrative-driven winners
-- defensive impact under-captured by boxscore data
-- structural limits of purely statistical modeling
+Typical notebook flow:
+1. `01_exploration.ipynb`  
+   → raw data inspection, distributions, missingness
+2. `02_build_df_clean.ipynb`  
+   → dataset assembly sanity checks
+3. `03_build_feature_matrices.ipynb`  
+   → feature engineering validation
+4. `04_award_datasets.ipynb`  
+   → award-specific eligibility inspection
+5. `05–07_modeling_*.ipynb`  
+   → exploratory modeling and error analysis
+
+⚠️ All production logic lives in **Python scripts under `src/` and `scripts/`**.  
+Notebooks should be seen as **documentation and analysis support**, not execution units.
 
 ---
 
@@ -150,53 +166,23 @@ Worst-case season analysis highlights:
 
 ```
 nba-awards-predictor/
-├── data/
-│   ├── raw/
-│   ├── interim/
-│   └── processed/
-│       └── reports/
-├── notebooks/
-├── scripts/
-│   └── build/
-├── src/
-│   └── awards_predictor/
-├── models/
-├── tests/
-├── .github/workflows/
-└── README.md
+├── data/                 # raw / processed / target datasets
+├── scripts/              # pipeline orchestration scripts
+├── src/awards_predictor/ # core Python package
+├── notebooks/            # exploratory analysis only
+├── tests/                # unit tests
+└── reports/              # generated artifacts (not versioned)
 ```
-
----
-
-## 📤 Outputs
-
-The pipeline produces:
-- Clean, enriched Parquet datasets
-- Excel audit reports for merges
-- CSV summaries for:
-  - global metrics per award
-  - winner ranking behavior
-- Fully reproducible experiment artifacts
 
 ---
 
 ## 🚧 Known limitations
 
-- Awards with strong **narrative components** cannot be fully captured statistically
+- Media narratives and voter bias are not explicitly modeled
 - Defensive impact remains partially observable
-- Tree models require careful auditing to avoid overconfidence
-- No media / voting data integrated (by design)
+- Near-perfect scores do not imply causal understanding
 
-These limitations are explicitly analyzed and documented.
-
----
-
-## 🧠 Future work
-
-- Dedicated **future-season prediction script** (no labels)
-- Feature ablation studies (stats-only vs advanced-only)
-- Optional integration of contextual signals (team success, standings)
-- Visualization layer (candidate dashboards)
+These limitations are discussed and quantified during evaluation.
 
 ---
 
@@ -204,13 +190,10 @@ These limitations are explicitly analyzed and documented.
 
 **Luc Renaud**  
 Data Engineering & Machine Learning  
-NBA analytics enthusiast  
-
-GitHub: https://github.com/lucR8
+ECE Paris
 
 ---
 
 ## 📄 License
 
-This project is released under the **MIT License**.  
-See the [LICENSE](./LICENSE) file for details.
+MIT License — see [LICENSE](./LICENSE)

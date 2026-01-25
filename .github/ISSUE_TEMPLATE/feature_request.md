@@ -1,25 +1,45 @@
 ---
 name: Feature Request
-about: Proposer une nouvelle fonctionnalité ou amélioration
-title: "[FEATURE] Titre descriptif"
+about: Propose a new feature or improvement for the project
+title: "[FEATURE] Short descriptive title"
 labels: enhancement
-assignees: ''
+assignees: ""
 ---
 
-## 🎯 Quel problème souhaitez-vous résoudre ?
-Expliquez la motivation ou le besoin.
+## 🎯 Problem statement
+Describe the problem or limitation you are trying to address.
+Why is this feature needed?
+
 ---
 
-## 💡 Description de la fonctionnalité souhaitée
-Décrivez clairement la feature que vous souhaitez ajouter.
+## 💡 Proposed solution
+Describe clearly the feature or improvement you would like to see.
+
 ---
 
-## 🛠 Implémentation potentielle (si vous avez une idée)
-Expliquez comment cela pourrait être ajouté.
+## 🧠 Rationale / motivation
+Explain why this feature makes sense in the context of the project:
+- data engineering
+- modeling
+- evaluation
+- reproducibility
+- interpretability
+
 ---
 
-## 📈 Impact attendu
-Comment cette fonctionnalité améliore-t-elle le projet ?
+## 🛠 Possible implementation (optional)
+If you have an idea, outline how this feature could be implemented:
+- affected modules
+- new scripts or functions
+- potential risks (leakage, performance, complexity)
+
 ---
 
-Merci pour votre proposition !
+## 📈 Expected impact
+How would this feature improve the project?
+(e.g. better evaluation, cleaner pipeline, improved realism, clearer results)
+
+---
+
+## 📎 Additional context
+Links, references, figures, or related discussions (if any).

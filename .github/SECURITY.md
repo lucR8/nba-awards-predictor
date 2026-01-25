@@ -1,100 +1,97 @@
 # 🔒 Security Policy
 
-Merci de votre intérêt pour la sécurité du projet **NBA Awards Predictor**.  
-Ce document décrit les bonnes pratiques de sécurité du dépôt ainsi que la procédure à suivre pour signaler une vulnérabilité.
+Thank you for your interest in the security of the **NBA Awards Predictor** project.
+This document outlines the security practices of the repository and how to responsibly report vulnerabilities.
 
 ---
 
-## 🛡️ Sécurisation du dépôt
+## 🛡️ Repository security
 
-Ce dépôt utilise les fonctionnalités de sécurité gratuites fournies par GitHub pour les projets publics :
+This repository relies on GitHub’s built-in security features for public projects.
 
-### ✅ Dependabot Alerts
-Le dépôt active **Dependabot** pour :
-- détecter les failles dans les dépendances Python (`requirements.txt`),
-- proposer automatiquement des mises à jour sécurisées.
+### ✅ Dependabot alerts
+Dependabot is enabled to:
+- detect vulnerabilities in Python dependencies,
+- propose secure dependency updates automatically.
 
-### 🔍 Secret Scanning
-GitHub scanne automatiquement le dépôt pour détecter :
-- clés API,
-- tokens,
-- mots de passe accidentellement commités.
+### 🔍 Secret scanning
+GitHub automatically scans the repository for:
+- API keys,
+- access tokens,
+- passwords accidentally committed.
 
-### 🚫 Push Protection
-La fonctionnalité **Push Protection** empêche d'envoyer par mégarde :
-- clés secrètes,
-- identifiants sensibles,
-- tokens personnels.
+### 🚫 Push protection
+Push protection prevents accidental commits containing:
+- secrets,
+- credentials,
+- personal access tokens.
 
-Si un secret est détecté lors d'un push, GitHub bloque la tentative.
+If a secret is detected, the push is blocked automatically.
 
-### 🧪 Code Scanning (CodeQL)
-Le dépôt peut utiliser **CodeQL** pour analyser le code Python et détecter des vulnérabilités potentielles :
-- injections,
-- erreurs de logique,
-- failles courantes.
-
----
-
-## 📣 Signalement d’une vulnérabilité
-
-Merci de suivre une **divulgation responsable**.
-
-### 🚫 Ne pas ouvrir un issue public
-Les vulnérabilités ne doivent **pas** être publiées sous forme d’issue publique afin d’éviter leur exploitation.
-
-### 📫 Contact privé
-Veuillez signaler toute vulnérabilité via :
-
-**👉 Email : luc.renaud.dev@gmail.com**
-
-Je réponds généralement sous 48 heures.
-
-### 🔐 Private Vulnerability Reporting
-Vous pouvez également utiliser le canal privé GitHub :
-
-👉 **Security → “Private vulnerability reporting” → “Report a vulnerability”**
-
-Cela permet une discussion sécurisée et un suivi structuré.
+### 🧪 Code scanning (CodeQL)
+When enabled, GitHub CodeQL can analyze Python code to detect:
+- common vulnerabilities,
+- unsafe patterns,
+- logic errors.
 
 ---
 
-## 🧭 Portée
+## 📣 Reporting a vulnerability
 
-Les composants concernés par cette politique :
-- scripts Python,
-- modules de data engineering & ML,
-- pipelines d’évaluation,
-- fichiers de configuration liés à l’IA.
+Please follow **responsible disclosure** practices.
 
-Données exclues :
-- datasets externes,
-- fichiers générés localement.
+### ❌ Do not open a public issue
+Security vulnerabilities must **not** be reported through public GitHub issues.
 
----
+### 📫 Private contact
+Report vulnerabilities privately via email:
 
-## 🛠 Processus de résolution
+**📧 luc.renaud8@gmail.com**
 
-Lorsqu'une vulnérabilité est signalée :
-1. Analyse du problème (24–48h).  
-2. Reproduction et validation.  
-3. Développement d’un correctif.  
-4. Publication d’une version patchée si nécessaire.  
-5. Crédit optionnel du chercheur ayant aidé (sur demande).
+### 🔐 GitHub private vulnerability reporting
+You may also use GitHub’s private reporting feature:
+
+**Security → Private vulnerability reporting → Report a vulnerability**
+
+This ensures a secure and traceable discussion.
 
 ---
 
-## 👍 Bonnes pratiques pour les contributeurs
+## 🧭 Scope
 
-- Ne stockez jamais :
-  - secrets API,
-  - clés privées,
-  - tokens personnels.
-- Utilisez des variables d’environnement.
-- Ne lancez pas de scraping intensif ou automatisé sur des sites tiers.
-- Gardez vos dépendances à jour.
+Included components:
+- Python source code
+- Data engineering and machine learning pipelines
+- Evaluation and configuration logic
+
+Excluded:
+- External datasets
+- Locally generated artifacts
 
 ---
 
-Merci pour votre aide dans l’amélioration de la sécurité de ce projet !  
-Pour toute question, contactez : **luc.renaud.dev@gmail.com**
+## 🛠 Resolution process
+
+When a vulnerability is reported:
+1. Initial assessment 
+2. Reproduction and validation
+3. Patch development
+4. Release of a fix if required
+5. Optional credit to the reporter
+
+---
+
+## 👍 Best practices for contributors
+
+- Never commit:
+  - API secrets
+  - private keys
+  - personal tokens
+- Use environment variables when required
+- Avoid aggressive or automated scraping of third-party websites
+- Keep dependencies reasonably up to date
+
+---
+
+For any security-related question, please contact:
+**luc.renaud8@gmail.com**

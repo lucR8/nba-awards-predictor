@@ -1,35 +1,40 @@
 # 🔁 Pull Request
 
-## 📝 Description
-Décrivez brièvement ce que fait cette PR.
+## 📝 Summary
+Provide a concise summary of what this PR changes and why.
 
 ---
 
-## 🔨 Changements inclus
-- [ ] Nouveau code
-- [ ] Fix de bug
-- [ ] Ajout de tests
-- [ ] Amélioration de documentation
-- [ ] Autre (préciser) :
+## 🔨 Changes included
+Select all that apply:
+- [ ] New feature
+- [ ] Bug fix
+- [ ] Refactor / cleanup (no behavior change)
+- [ ] Tests added or updated
+- [ ] Documentation update
+- [ ] Other (please specify): 
 
 ---
 
-## 🧪 Tests
-Expliquez comment vous avez testé vos modifications.
-Exemple :
+## 🧪 How was this tested?
+Describe how you validated the changes (commands, scripts, notebooks):
+
 ```bash
 pytest -q
 ```
+
+If no tests were run, explain why.
+
 ---
 
-## 🧩 Checklist
-- [ ] Le code respecte la PEP8 / style du projet
-- [ ] Les tests passent correctement
-- [ ] Pas de breaking changes inattendues
-- [ ] Documentation mise à jour (si nécessaire)
+## 🔍 Reproducibility & data safety checklist
+- [ ] No raw or generated datasets were committed
+- [ ] No secrets / API keys were committed
+- [ ] Changes are deterministic (seeded) where relevant
+- [ ] No temporal leakage introduced (season-aware features/splits preserved)
+- [ ] Logging remains clear and actionable
+
 ---
 
-## 📎 Notes complémentaires (optionnel)
-Ajoutez toute info utile au mainteneur.
-
-Merci pour votre contribution !
+## 📎 Notes (optional)
+Any additional context useful for reviewers (links, figures, references, screenshots).

@@ -32,6 +32,9 @@ data/target/**
 data/experiments/**
 data/interim/**
 
+#ploting artifacts
+reports/
+
 # Logs
 data/logs/**
 fetch_logs/**

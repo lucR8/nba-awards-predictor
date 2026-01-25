@@ -1,60 +1,73 @@
 # Contributing to NBA Awards Predictor
 
-Merci de votre intérêt pour contribuer à ce projet !  
-Bien que le développement soit principalement personnel, les contributions externes sont possibles à condition de respecter les lignes suivantes.
+Thank you for your interest in contributing to **NBA Awards Predictor**.
+
+This repository is primarily developed as an academic and research-oriented project,
+but external contributions are welcome as long as they follow the guidelines below.
 
 ---
 
-## 🚀 Workflow de contribution
+## 🚀 Contribution workflow
 
-1. **Forkez** le repository
-2. Créez une branche dédiée :
+1. Fork the repository
+2. Create a dedicated branch:
 ```bash
-git checkout -b feature/nom-de-la-feature
+git checkout -b feature/short-description
 ```
-3. Faites vos modifications (voir sections tests & qualité)
-4. Commitez proprement avec un message clair :
-    feat: ajout du calcul des percentiles  
-    fix: correction d’un bug dans le chargement des CSV  
-5. Ouvrez une Pull Request vers main en suivant le template fourni.
+
+3. Implement your changes
+4. Commit using clear and conventional messages:
+```
+feat: add season-aware ranking metric
+fix: prevent temporal leakage in feature matrix
+refactor: simplify eligibility rules for SMOY
+```
+
+5. Open a Pull Request targeting the `main` branch.
+
 ---
+
 ## 🧪 Tests
 
-Merci de vérifier que les tests passent avant de soumettre une PR :
+Before submitting a Pull Request, make sure all tests pass:
 ```bash
 pytest -q
 ```
-Si vous ajoutez une nouvelle fonctionnalité, merci d’ajouter également un test minimal dans tests/.
+
+If you add new functionality, please include at least one minimal test under `tests/`.
+
 ---
 
-## 🧹 Qualité du code
+## 🧹 Code quality guidelines
 
-Le projet utilise des standards simples :
-- Respect de la structure projet (src/awards_predictor/*)
-- Style Python PEP8 recommandé
-- Pas de scraping Basketball Reference dans le repo
-(pour respecter leurs conditions d’utilisation)
+- Respect the existing project structure (`src/awards_predictor/`)
+- Prefer explicit and readable code over clever shortcuts
+- Avoid hidden state or implicit data leakage
+- All modeling logic must be **season-aware**
+- Do **not** scrape Basketball-Reference within this repository
 
-Optionnel mais recommandé :
+Optional but recommended:
 ```bash
 flake8 src
 ```
+
 ---
 
-## 📦 Structure à respecter
+## 📦 Project structure
 
-Merci de conserver l'organisation suivante :
-```bash
+```
 src/awards_predictor/
-    data/         # Chargement / validation des données
-    features/     # Feature engineering
-    models/       # Entraînement / sauvegarde des modèles
-    evaluation/   # Métriques et validation
-    viz/          # Visualisations
+    data/          # Data loading, validation, eligibility rules
+    features/     # Feature engineering & matrix construction
+    models/       # Model definitions
+    evaluation/   # Metrics, ranking logic, audits
+    plot/         # Reproducible figures
 ```
 
-Les données brutes ne doivent pas être ajoutées au repository.
+Raw datasets must **never** be committed.
+
 ---
 
 ## 📬 Questions
-Pour toute question, ouvrez une issue GitHub en suivant le template.
+
+Please open a GitHub Issue for any question or suggestion.
