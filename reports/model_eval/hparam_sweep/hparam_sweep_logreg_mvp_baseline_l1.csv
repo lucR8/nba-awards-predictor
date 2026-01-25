@@ -1,0 +1,4 @@
+award,feature_set,penalty,l1_ratio,C,n_runs,train_auc_mean,train_auc_std,val_auc_mean,val_auc_std
+mvp,baseline,l1,,0.1,1,0.9711301998044196,0.0,0.9748995983935743,0.0
+mvp,baseline,l1,,1.0,1,0.975926402768214,0.0,0.9721106648817492,0.0
+mvp,baseline,l1,,10.0,1,0.977127080934388,0.0,0.9721106648817492,0.0
