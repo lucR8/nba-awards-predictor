@@ -106,11 +106,15 @@ def filter_mip(df: pd.DataFrame) -> pd.DataFrame:
         out["is_rookie"] = pd.to_numeric(out["is_rookie"], errors="coerce").fillna(0).astype(int)
         out = out[out["is_rookie"] == 0]
 
-    # min games / minutes
-    for col, thr in [("G", 20), ("MP", 300)]:
-        if col in out.columns:
-            out[col] = pd.to_numeric(out[col], errors="coerce")
-            out = out[out[col].fillna(0) >= thr]
+    # min games
+    if "G" in out.columns:
+        out["G"] = pd.to_numeric(out["G"], errors="coerce")
+        out = out[out["G"].fillna(0) >= 20]
+
+    # min minutes per game (MP is per-game in your dataset)
+    if "MP" in out.columns:
+        out["MP"] = pd.to_numeric(out["MP"], errors="coerce")
+        out = out[out["MP"].fillna(0) >= 15]
 
     # exiger saison N-1 dispo (proxy : prev_MP ou prev_pct_MP)
     prev_candidates = [c for c in ["prev_MP", "prev_pct_MP"] if c in out.columns]
