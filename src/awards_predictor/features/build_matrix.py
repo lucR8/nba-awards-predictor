@@ -4,6 +4,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
+import numpy as np
 import pandas as pd
 
 from awards_predictor.data.eligibility import apply_eligibility
@@ -38,22 +39,30 @@ def _infer_end_year(season_val) -> Optional[int]:
     """
     if season_val is None or (isinstance(season_val, float) and pd.isna(season_val)):
         return None
-    if isinstance(season_val, (int,)):
+
+    if isinstance(season_val, (int, np.integer)):
         return int(season_val)
-    try:
-        s = str(season_val).strip()
-        if s.isdigit():
-            return int(s)
-        if "-" in s:
-            a, b = s.split("-", 1)
-            a = a.strip()
-            b = b.strip()
-            if len(b) == 2 and a.isdigit():
-                return int(a[:2] + b)  # 2025 + 26 -> 2026
-            if b.isdigit():
-                return int(b)
-    except Exception:
+
+    s = str(season_val).strip()
+    if not s:
         return None
+
+    if s.isdigit():
+        return int(s)
+
+    if "-" in s:
+        a, b = s.split("-", 1)
+        a = a.strip()
+        b = b.strip()
+
+        # 2025-26 -> 2026
+        if len(b) == 2 and a.isdigit():
+            return int(a[:2] + b)
+
+        # 2025-2026 -> 2026
+        if b.isdigit():
+            return int(b)
+
     return None
 
 
@@ -63,6 +72,7 @@ def _normalize_schema(df: pd.DataFrame) -> pd.DataFrame:
       - Player
       - season (end-year int)
       - Tm (team abbrev)
+    This function is intentionally conservative: it does NOT invent missing Player/Tm.
     """
     x = df.copy()
 
@@ -82,6 +92,9 @@ def _normalize_schema(df: pd.DataFrame) -> pd.DataFrame:
 
     if "season" in x.columns:
         x["season"] = x["season"].apply(_infer_end_year)
+        # CRITICAL: drop rows where season cannot be parsed
+        x = x[~pd.isna(x["season"])].copy()
+        x["season"] = _safe_num(x["season"]).astype("Int64")
 
     return x
 
@@ -124,10 +137,8 @@ def add_prev_features(
             and not str(c).startswith("prev_")
         ]
 
-    # groupby-shift on a DATAFRAME -> fast + no fragmentation
     prev_block = out.groupby(player_col, sort=False)[prev_cols].shift(1)
     prev_block = prev_block.add_prefix("prev_")
-
     return pd.concat([out, prev_block], axis=1)
 
 
@@ -142,14 +153,13 @@ def add_delta_features(
     """
     out = df.copy()
 
-    # keep only pairs that exist
     cur_cols = [c for c in numeric_cols if c in out.columns and f"prev_{c}" in out.columns]
     if not cur_cols:
         return out
 
     cur = out[cur_cols].apply(pd.to_numeric, errors="coerce")
     prev = out[[f"prev_{c}" for c in cur_cols]].apply(pd.to_numeric, errors="coerce")
-    prev.columns = cur_cols  # align for subtraction
+    prev.columns = cur_cols
 
     delta = (cur - prev).add_prefix(prefix)
     return pd.concat([out, delta], axis=1)
@@ -200,11 +210,10 @@ def build_target_matrix(
     _require_cols(df_target, ["season", "Player", "Tm", "__row_id"], "build_target_matrix(df_target)")
     _require_cols(df_hist, ["season", "Player", "Tm"], "build_target_matrix(df_hist)")
 
-    # concat hist + target (important for prev season lookup)
     df_all = pd.concat([df_hist, df_target], ignore_index=True, sort=False)
     df_all["season"] = _safe_num(df_all["season"]).astype("Int64")
 
-    # choose base feature set on df_all (so numeric list is stable)
+    # choose base feature set on df_all (stable feature list)
     if feature_set == "baseline":
         fs_base: FeatureSet = build_baseline_feature_set(df_all.columns)
     elif feature_set == "tree":
@@ -215,9 +224,8 @@ def build_target_matrix(
     # compute prev_* on df_all BEFORE filtering target_year
     if add_prev:
         if prev_cols is None:
-            # IMPORTANT for MIP: ensure MP / pct_MP are included if they exist,
-            # because some filter_mip implementations require prev_MP or prev_pct_MP.
             prev_cols = fs_base.resolve_numeric(df_all.columns)
+            # ensure MP proxies exist if present (MIP rules often need them)
             for must in ("MP", "pct_MP"):
                 if must in df_all.columns and must not in prev_cols:
                     prev_cols.append(must)
@@ -227,8 +235,24 @@ def build_target_matrix(
     # isolate target season rows
     df_t = df_all[df_all["season"] == int(target_year)].copy()
 
+    # CRITICAL: if target_year not present, return empty bundle (caller can skip)
+    if df_t.empty:
+        return MatrixBundle(
+            X=pd.DataFrame(),
+            meta=pd.DataFrame(columns=["season", "Player", "Tm", "__row_id"]),
+            feature_set_name=fs_base.name,
+        )
+
     # eligibility filter (ROY rookies, SMOY bench proxy, etc.)
     df_t = apply_eligibility(df_t, award, rookies=rookies)
+
+    # if eligibility removes everything, return empty
+    if df_t.empty:
+        return MatrixBundle(
+            X=pd.DataFrame(),
+            meta=pd.DataFrame(columns=["season", "Player", "Tm", "__row_id"]),
+            feature_set_name=fs_base.name,
+        )
 
     # MIP: add deltas vs prev season and include them in X
     fs_final = fs_base
@@ -264,7 +288,7 @@ def load_target_dataset(paths: TargetSnapshotPaths) -> pd.DataFrame:
     if paths.build_players_final.exists():
         return pd.read_parquet(paths.build_players_final)
     raise FileNotFoundError(
-        f"Missing target dataset. Expected:\n"
+        "Missing target dataset. Expected:\n"
         f"- {paths.build_players_with_bio}\n"
         f"- {paths.build_players_final}"
     )

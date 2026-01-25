@@ -12,6 +12,8 @@ __pycache__/
 dist/
 build/
 *.log
+.conda/
+.pytest_cache/
 
 # ============================================================
 # Data - generated / experimental

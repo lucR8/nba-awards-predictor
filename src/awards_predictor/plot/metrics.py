@@ -26,10 +26,14 @@ def _prep(df: pd.DataFrame) -> pd.DataFrame:
 
     # numeric coercion
     numeric_cols = [
-        "val_auc", "test_auc",
-        "val_mrr", "test_mrr",
-        "val_hit@1", "test_hit@1",
-        "val_hit@5", "test_hit@5",
+        "val_auc",
+        "test_auc",
+        "val_mrr",
+        "test_mrr",
+        "val_hit@1",
+        "test_hit@1",
+        "val_hit@5",
+        "test_hit@5",
         "test_mean_winner_rank",
     ]
     for c in numeric_cols:
@@ -127,13 +131,13 @@ def plot_mean_winner_rank(df_award: pd.DataFrame, out_dir: Path, award: str) -> 
         return
 
     plt.figure(figsize=(9.5, 4.8))
+    # FIX: no palette without hue (seaborn FutureWarning)
     ax = sns.stripplot(
         data=d,
         x="test_mean_winner_rank",
         y="model",
         size=10,
         alpha=0.95,
-        palette="tab10",
     )
     ax.set_title(f"{award.upper()} — Mean winner rank (test) (lower is better)")
     ax.set_xlabel("mean winner rank")
@@ -182,10 +186,11 @@ def plot_summary_overview(df: pd.DataFrame, out_dir: Path) -> None:
     # simple overview: best model per award (test_auc)
     if "test_auc" not in df.columns:
         return
+
     best = (
         df.dropna(subset=["test_auc"])
         .sort_values(["award", "test_auc"], ascending=[True, False])
-        .groupby("award", as_index=False)
+        .groupby("award", as_index=False, observed=False)  # FIX: silence pandas FutureWarning
         .head(1)
     )
     if best.empty:

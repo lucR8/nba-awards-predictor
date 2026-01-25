@@ -95,7 +95,7 @@ def main() -> None:
         import pandas as pd
         from awards_predictor.config import AWARDS, HIST_ENRICHED_PARQUET
         from awards_predictor.sanity.leakage_check import check_leakage
-        from awards_predictor.train.train_awards import _build_training_table
+        from awards_predictor.train.train_awards import build_training_table
 
         df_hist = pd.read_parquet(HIST_ENRICHED_PARQUET)
 
@@ -108,7 +108,7 @@ def main() -> None:
         corr_thr = float(args.leakage_corr_threshold)
 
         for award in AWARDS:
-            table = _build_training_table(df_hist, award=award, feature_set="baseline")
+            table = build_training_table(df_hist, award=award, feature_set="baseline")
             X, y, meta = table.X, table.y, table.meta
 
             # If split is available, check leakage only on TRAIN

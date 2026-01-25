@@ -2,45 +2,93 @@
 from __future__ import annotations
 
 import re
+from typing import Iterable
+
 import numpy as np
 import pandas as pd
 
-
-LEAK_KEYWORDS = [
-    "winner", "award", "rank", "vote", "share",
-    "points", "pts", "first", "second", "third",
-    "all_nba", "all_def",
-    "mvp", "dpoy", "roy", "smoy", "mip",
-]
+from awards_predictor.features.columns import is_leakage_feature
 
 
-def _name_based_leakage(columns: list[str]) -> list[str]:
-    bad = []
-    for c in columns:
+# Award tokens used only to detect columns like "mvp_share", "dpoy_rank", etc.
+_AWARD_TOKENS = ("mvp", "dpoy", "roy", "smoy", "mip")
+
+# Conservative vote/award proxy patterns (avoid catching normal stats like "pts")
+_AWARD_PROXY_PAT = re.compile(
+    r"(^|_)(vote|voting|share|rank|award|points)($|_)", re.IGNORECASE
+)
+
+
+def _name_based_leakage(columns: Iterable[str]) -> list[str]:
+    """
+    Name-based leakage detection.
+
+    Source of truth: features.columns.is_leakage_feature().
+    Additionally flags award-specific vote/share/rank columns such as:
+      - mvp_share, dpoy_rank, roy_votes, smoy_points, etc.
+    """
+    bad: list[str] = []
+    for c in map(str, columns):
         cl = c.lower()
-        for kw in LEAK_KEYWORDS:
-            if re.search(rf"\b{kw}\b", cl):
-                bad.append(c)
-                break
+
+        # canonical rule-set (aligned with notebooks / columns.py)
+        if is_leakage_feature(c):
+            bad.append(c)
+            continue
+
+        # award-specific proxy columns (only when token + proxy keyword co-occur)
+        if any(tok in cl for tok in _AWARD_TOKENS) and _AWARD_PROXY_PAT.search(cl):
+            bad.append(c)
+            continue
+
     return sorted(set(bad))
 
 
-def _corr_based_leakage(X: pd.DataFrame, y: pd.Series, threshold: float = 0.95) -> list[tuple[str, float]]:
-    leaks = []
-    yv = pd.Series(y).astype(float)
+def _corr_based_leakage(
+    X: pd.DataFrame,
+    y: pd.Series,
+    threshold: float = 0.95,
+    min_non_null: int = 25,
+) -> list[tuple[str, float]]:
+    """
+    Correlation-based leakage detection.
 
-    for c in X.columns:
-        try:
-            xv = pd.to_numeric(X[c], errors="coerce")
-            if xv.notna().sum() < 10:
-                continue
-            corr = np.corrcoef(xv.fillna(0), yv.fillna(0))[0, 1]
-            if np.isfinite(corr) and abs(corr) >= threshold:
-                leaks.append((c, float(corr)))
-        except Exception:
-            continue
+    We compute Pearson correlation between each numeric column and y.
+    We skip:
+      - non-numeric columns
+      - columns with too few non-null values
+      - near-constant columns
+      - constant y (cannot compute correlation)
+    """
+    if X.empty:
+        return []
 
-    return sorted(leaks, key=lambda x: abs(x[1]), reverse=True)
+    yv = pd.to_numeric(pd.Series(y), errors="coerce").astype(float)
+    if yv.nunique(dropna=True) <= 1:
+        return []
+
+    # Keep only numeric-ish columns
+    Xn = X.apply(pd.to_numeric, errors="coerce")
+
+    # Drop columns with too few observations
+    non_null = Xn.notna().sum(axis=0)
+    Xn = Xn.loc[:, non_null >= min_non_null]
+    if Xn.shape[1] == 0:
+        return []
+
+    # Drop near-constant columns (std ~ 0)
+    std = Xn.std(axis=0, skipna=True)
+    Xn = Xn.loc[:, std > 1e-12]
+    if Xn.shape[1] == 0:
+        return []
+
+    # Compute correlations
+    corr = Xn.corrwith(yv, axis=0, drop=False)
+    corr = corr.replace([np.inf, -np.inf], np.nan).dropna()
+
+    leaks = [(c, float(v)) for c, v in corr.items() if abs(v) >= threshold]
+    leaks.sort(key=lambda t: abs(t[1]), reverse=True)
+    return leaks
 
 
 def check_leakage(
@@ -53,6 +101,9 @@ def check_leakage(
 ) -> None:
     """
     Raises RuntimeError if leakage is detected.
+
+    - Name-based detection uses the same leakage rules as feature selection.
+    - Correlation-based detection catches accidental target proxies.
     """
     cols = list(map(str, X.columns))
 
@@ -79,5 +130,4 @@ def check_leakage(
 
     if strict:
         raise RuntimeError(full_msg)
-    else:
-        print(full_msg)
+    print(full_msg)
