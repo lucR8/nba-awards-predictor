@@ -1,138 +1,216 @@
-# 🏀 NBA Awards Predictor — MVP / MIP / 6MOTY / ROTY (Machine Learning Project)
+# 🏀 NBA Awards Predictor — MVP / DPOY / ROY / SMOY / MIP  
+### Data Engineering & Machine Learning Project
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
-![Security](https://img.shields.io/badge/CodeSql-enabled-brightgreen)
-![Dependabot](https://img.shields.io/badge/Dependabot-enabled-brightgreen)
-![Secret%20Scanning](https://img.shields.io/badge/Secret%20Scanning-active-blue)
-![Push%20Protection](https://img.shields.io/badge/Push%20Protection-enabled-purple)
-![Contributions](https://img.shields.io/badge/Contributions-welcome-orange)
+![CI](https://img.shields.io/badge/CI-GitHub%20Actions-brightgreen)
+![Reproducibility](https://img.shields.io/badge/Reproducibility-Guaranteed-blue)
+![Data%20Engineering](https://img.shields.io/badge/Data%20Engineering-Core-orange)
+![ML](https://img.shields.io/badge/Machine%20Learning-Ranking-purple)
 
-> **Projet IA & Data Science** visant à prédire les trophées NBA à partir de statistiques avancées et partielles de saison.  
-> Basé sur un pipeline complet de feature engineering (percentiles, z-scores, impact metrics) et un apprentissage supervisé.
+> **End-to-end Data Engineering & Machine Learning project** focused on predicting NBA individual awards  
+> (MVP, Defensive Player of the Year, Rookie of the Year, Sixth Man, Most Improved Player)  
+> using historical multi-source data, robust entity resolution, and season-aware ranking models.
+
 ---
 
-## 🎯 Objectifs
-- Créer un **pipeline reproductible** pour prédire les récompenses NBA (MVP, MIP, 6MOTY, ROTY).  
-- Exploiter des **statistiques avancées** pour évaluer la performance réelle des joueurs.  
-- Démontrer des compétences en **Data Science appliquée, Machine Learning et CI/CD**.  
-- Supporter la **saison en cours** via des données partielles.
+## 🎯 Project goals
+
+The main objective of this project is to design a **robust, reproducible and auditable pipeline** able to:
+
+- Consolidate **historical NBA player data (1996 → 2025)** from heterogeneous sources
+- Solve a **multi-source entity resolution problem** without a shared unique identifier
+- Train and evaluate **season-aware ranking models** for multiple NBA awards
+- Analyze **model limitations**, leakage risks, and narrative-driven failure cases
+- Prepare a **future-season prediction workflow** (no labels available)
+
+This project deliberately focuses on **real-world constraints**:
+partial data, temporal consistency, imbalanced targets, and award-specific business rules.
+
 ---
 
-## 🧱 Architecture du projet
+## 📦 Data sources
+
+### Primary source
+- **Basketball-Reference**
+  - Regular season & playoffs
+  - Tables:
+    - `per_game`, `totals`, `per_36`, `per_100`
+    - `advanced`, `shooting`, `adjusted_shooting`
+  - **Intra-season percentiles** computed to ensure inter-era comparability
+
+### External data
+- Player biographical data (age, height, weight, country, draft, position)
+- Advanced impact metrics:
+  - **RAPTOR**
+  - **LEBRON**
+  - **MAMBA**
+
+⚠️ No universal player ID exists across sources →  
+**safe name normalization + fuzzy matching + temporal guards** are used.
+
+---
+
+## 🏗️ Data engineering pipeline
+
+The full build pipeline is **CLI-driven, idempotent, and fully logged**:
+
+```bash
+python -m scripts.build.players.run_all --start 1996 --end 2025
+```
+
+### Pipeline steps
+1. **Basketball-Reference build**
+   - Regular season + playoffs
+   - Percentile computation (season-level)
+2. **Bio merge**
+   - Safe joins with coverage reports  
+   - Outputs:
+     - `all_years_with_bio.parquet`
+     - `bio_merge_report.xlsx`
+3. **External metrics merge**
+   - Temporal validation (no look-ahead)
+   - Outputs:
+     - `all_years_enriched.parquet`
+     - `metric_merge_report.xlsx`
+4. **Assertions, logs, and audit artifacts** at each critical step
+
+The pipeline guarantees:
+- No season leakage
+- Full traceability
+- Reproducible builds
+
+---
+
+## 📊 Notebooks & analysis workflow
+
+The project is structured around **sequential, responsibility-driven notebooks**:
+
+| Notebook | Purpose |
+|--------|--------|
+| `01_exploration.ipynb` | Exploratory analysis (read-only) |
+| `02_build_df_clean.ipynb` | Label creation, feature derivation, audits |
+| `03_build_feature_matrices.ipynb` | Numerical matrices (era-aware) |
+| `04_award_datasets.ipynb` | Award-specific datasets & eligibility |
+| `05_modeling_logreg_baseline.ipynb` | Logistic ranking baseline |
+| `06_modeling_tree_models.ipynb` | Tree-based models (GBDT) |
+| `07_error_analysis_audit.ipynb` | Cross-award audit & failure analysis |
+
+All splits are **time-aware** and evaluated at the **season level**.
+
+---
+
+## 🧠 Award-specific logic
+
+Each award is modeled with **distinct business rules**:
+
+- **ROY**: rookies only, no year-over-year features
+- **SMOY**: bench role constraint (games started vs played)
+- **DPOY**: defensive-focused metrics, known observability limits
+- **MIP**: year-over-year dynamics (high variance)
+- **MVP**:
+  - full population
+  - extreme class imbalance
+  - strong narrative component
+
+---
+
+## 🧪 Evaluation methodology
+
+The task is framed as a **ranking problem**, not pure classification.
+
+Main metrics:
+- **MRR (Mean Reciprocal Rank)**
+- **Top-K hit rate** (Top-1, Top-3, Top-5, Top-10)
+- Winner **median / worst rank** across seasons
+
+This evaluation reflects real voting dynamics:
+> *“How high does the true winner appear in the ranked candidate list?”*
+
+---
+
+## 🔍 Model comparison & audit
+
+A dedicated audit compares **baseline vs tree-based models**:
+
+Key findings:
+- Tree models improve performance on **MVP and DPOY**
+- No benefit (or degradation) on **SMOY and MIP**
+- **ROY** shows split-dependent sensitivity (small cohorts)
+- Near-perfect MVP scores require **cautious interpretation**
+
+Worst-case season analysis highlights:
+- narrative-driven winners
+- defensive impact under-captured by boxscore data
+- structural limits of purely statistical modeling
+
+---
+
+## 📁 Project structure
 
 ```
 nba-awards-predictor/
 ├── data/
-│   ├── raw/                # Données sources (CSV simulés inclus)
-│   └── processed/          # Données featurisées
-├── notebooks/              # EDA / prototypes
-├── scripts/                # CLI : fetch/build/train/predict
-├── src/awards_predictor/
-│   ├── data/               # Collecte et IO
-│   ├── features/           # Feature engineering (percentiles, z-scores, etc.)
-│   ├── models/             # Entraînement / persistance
-│   ├── evaluation/         # Métriques / évaluation
-│   └── viz/                # Dashboard (Streamlit placeholder)
-├── tests/                  # Pytest
-├── models/                 # Modèles sauvegardés (.pkl)
-├── .github/workflows/      # CI/CD — tests automatiques GitHub Actions
-├── requirements.txt
+│   ├── raw/
+│   ├── interim/
+│   └── processed/
+│       └── reports/
+├── notebooks/
+├── scripts/
+│   └── build/
+├── src/
+│   └── awards_predictor/
+├── models/
+├── tests/
+├── .github/workflows/
 └── README.md
 ```
+
 ---
 
-## ⚙️ Installation rapide
+## 📤 Outputs
 
-```bash
-# 1) Créer un environnement virtuel
-python -m venv .venv
+The pipeline produces:
+- Clean, enriched Parquet datasets
+- Excel audit reports for merges
+- CSV summaries for:
+  - global metrics per award
+  - winner ranking behavior
+- Fully reproducible experiment artifacts
 
-# 2) Activer l'environnement
-# Windows :
-.venv\Scripts\activate
-# macOS/Linux :
-source .venv/bin/activate
-
-# 3) Installer les dépendances
-pip install -r requirements.txt
-
-# (Optionnel) Installer les hooks qualité
-pre-commit install
-```
 ---
 
-## 🚀 Démarrage rapide (avec données incluses)
+## 🚧 Known limitations
 
-```bash
-# 1) Construire les features à partir des CSV d'exemple
-python scripts/build_features.py \
-  --season 2024 \
-  --input data/raw/sample_players_2024_partial.csv \
-  --teams data/raw/sample_teams_2024_partial.csv \
-  --out data/processed/mvp_features_2024.parquet
+- Awards with strong **narrative components** cannot be fully captured statistically
+- Defensive impact remains partially observable
+- Tree models require careful auditing to avoid overconfidence
+- No media / voting data integrated (by design)
 
-# 2) Entraîner un modèle MVP (baseline)
-python scripts/train_mvp.py \
-  --features data/processed/mvp_features_2024.parquet \
-  --out models/mvp_random_forest.pkl \
-  --metrics models/mvp_metrics.json
+These limitations are explicitly analyzed and documented.
 
-# 3) Prédire le classement MVP actuel
-python scripts/predict_mvp.py \
-  --features data/processed/mvp_features_2024.parquet \
-  --model models/mvp_random_forest.pkl \
-  --topk 10 \
-  --out data/processed/mvp_predictions_2024.csv
-```
 ---
 
-## 🧠 Feature Engineering
-- **Percentiles Ligue** : `pts_pctile`, `ast_pctile`, `reb_pctile`, `ts_pctile`, etc.  
-- **Z-Scores par position** pour comparer les profils de joueurs équivalents.  
-- **Impact metrics** : combinaisons statistiques (`TS%`, `USG%`, `BPM`, `WS`, `VORP`).  
-- **Features contextuelles** : minutes, rôle (starter/bench), pourcentage de victoires de l’équipe.
+## 🧠 Future work
+
+- Dedicated **future-season prediction script** (no labels)
+- Feature ablation studies (stats-only vs advanced-only)
+- Optional integration of contextual signals (team success, standings)
+- Visualization layer (candidate dashboards)
+
 ---
 
-## 🧩 Approche de modélisation
-
-- Modèles ML supervisés : Random Forest, Gradient Boosting, ExtraTrees.
-- Pipeline de ranking pour produire un classement type votants médias.
-- Validation croisée, analyse d’importance (SHAP prévu).
-- Entraînement reproductible via scripts CLI.
----
-
-## 🧪 Évaluation & CI/CD
-- Métriques : AUC, F1, LogLoss, Spearman Rank Corr.
-- Tests unitaires via Pytest.
-  - CI automatisée via GitHub Actions (tests + sécurité).
-- Sécurité GitHub activée :
-  - CodeQL
-  - Dependabot
-  - Secret Scanning
-  - Push Protection
----
-
-## 📊 Exemple de résultats (mock)
-
-| Joueur | Équipe | Position | Score MVP |
-|--------|---------|-----------|------------|
-| Nikola Jokic | DEN | C | 0.92 |
-| Luka Doncic | DAL | PG | 0.89 |
-| Jayson Tatum | BOS | SF | 0.86 |
----
-
-## 👨‍💻 Auteur
+## 👨‍💻 Author
 
 **Luc Renaud**  
-Master 1 — Ingénierie Data & IA (ECE Paris)
-Passionné de NBA, ML, et Data Science appliquée au sport
-[lucR8](https://github.com/lucR8)
+Data Engineering & Machine Learning  
+NBA analytics enthusiast  
+
+GitHub: https://github.com/lucR8
+
 ---
 
-## 🧩 Licence
+## 📄 License
 
-Ce projet est distribué sous licence **MIT**.  
-Voir le fichier [LICENSE](./LICENSE) pour plus d'informations.
----
-
+This project is released under the **MIT License**.  
+See the [LICENSE](./LICENSE) file for details.

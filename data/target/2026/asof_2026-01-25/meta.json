@@ -1,0 +1,7 @@
+{
+  "season_end_year": 2026,
+  "season_str": "2025-26",
+  "snapshot_date": "2026-01-25",
+  "created_at_utc": "2026-01-25T05:44:01Z",
+  "note": "Target-season snapshot for prediction. Data is PARTIAL if the season is ongoing. All downstream build/model steps MUST treat it as 'as-of snapshot_date'."
+}
