@@ -1,8 +1,8 @@
-# src/awards_predictor/predict/predict_season.py
 from __future__ import annotations
 
 import argparse
 import json
+import re
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
@@ -14,8 +14,10 @@ from awards_predictor.config import AWARDS, HIST_ENRICHED_PARQUET
 from awards_predictor.features.build_matrix import build_target_matrix, load_target_dataset
 from awards_predictor.io.paths import season_str, target_paths
 
-
 REPO_ROOT = Path(__file__).resolve().parents[3]
+
+# Only timestamp training runs (ignore "pretrained", "tmp", etc.)
+_RUN_ID_RE = re.compile(r"^\d{8}_\d{6}$")  # ex: 20260126_003419
 
 
 @dataclass(frozen=True)
@@ -34,28 +36,52 @@ class PretrainedRef:
     model_path: Path
 
 
+# -----------------------------
+# Pretrained manifest
+# -----------------------------
 def load_pretrained_manifest(manifest_path: Path) -> dict[str, PretrainedRef]:
+    manifest_path = manifest_path if manifest_path.is_absolute() else (REPO_ROOT / manifest_path)
     data = json.loads(manifest_path.read_text(encoding="utf-8"))
+
     out: dict[str, PretrainedRef] = {}
     for m in data.get("models", []):
-        award = str(m["award"]).lower()
+        award = str(m["award"]).lower().strip()
         out[award] = PretrainedRef(
             award=award,
-            family=str(m.get("family", "baseline")).lower(),
-            feature_set=str(m.get("feature_set", "baseline")).lower(),
-            format=str(m.get("format", "joblib")).lower(),
+            family=str(m.get("family", "baseline")).lower().strip(),
+            feature_set=str(m.get("feature_set", "baseline")).lower().strip(),
+            format=str(m.get("format", "joblib")).lower().strip(),
             model_path=Path(m["model_path"]),
         )
     return out
 
 
+# -----------------------------
+# Run resolution
+# -----------------------------
+def latest_run_id(models_dir: Path) -> str:
+    models_dir = models_dir if models_dir.is_absolute() else (REPO_ROOT / models_dir)
+    candidates = [p for p in models_dir.iterdir() if p.is_dir() and _RUN_ID_RE.match(p.name)]
+    if not candidates:
+        raise FileNotFoundError(
+            f"No timestamped runs found in {models_dir}. "
+            f"Expected folders like YYYYMMDD_HHMMSS (e.g., 20260126_003419)."
+        )
+    return max(candidates, key=lambda p: p.name).name
+
+
+# -----------------------------
+# Model loading
+# -----------------------------
 def _try_load_sklearn(model_path: Path) -> Optional[LoadedModel]:
     try:
         import joblib  # type: ignore
     except Exception:
         return None
+
     if not model_path.exists():
         return None
+
     m = joblib.load(model_path)
     feat = getattr(m, "feature_names_in_", None)
     return LoadedModel(m, "sklearn", list(feat) if feat is not None else None)
@@ -68,6 +94,7 @@ def _try_load_xgboost(model_path: Path) -> Optional[LoadedModel]:
         import xgboost as xgb  # type: ignore
     except Exception:
         return None
+
     booster = xgb.Booster()
     booster.load_model(str(model_path))
     feat = booster.feature_names
@@ -75,7 +102,6 @@ def _try_load_xgboost(model_path: Path) -> Optional[LoadedModel]:
 
 
 def load_model_from_path(model_path: Path) -> LoadedModel:
-    # support .joblib (sklearn pipeline) or xgb json
     if model_path.suffix.lower() == ".joblib":
         m = _try_load_sklearn(model_path)
         if m is None:
@@ -94,12 +120,12 @@ def load_model_from_path(model_path: Path) -> LoadedModel:
 def align_X(X: pd.DataFrame, model: LoadedModel) -> pd.DataFrame:
     if not model.feature_names:
         return X
+
     cols = model.feature_names
     X2 = X.copy()
     for c in cols:
         if c not in X2.columns:
             X2[c] = 0.0
-    # drop extra cols to match expected order
     return X2[cols]
 
 
@@ -117,27 +143,27 @@ def predict_proba(model: LoadedModel, X: pd.DataFrame) -> pd.Series:
     raise RuntimeError(f"Unsupported model_type={model.model_type}")
 
 
-def latest_run_id(models_dir: Path) -> str:
-    runs = [p for p in models_dir.iterdir() if p.is_dir()]
-    if not runs:
-        raise FileNotFoundError(f"No runs found in {models_dir}")
-    return sorted(runs, key=lambda p: p.name)[-1].name
-
-
+# -----------------------------
+# Snapshot resolution
+# -----------------------------
 def _resolve_snapshot_paths(year: int, snapshot_dir: Optional[Path]) -> Any:
-    # target_paths(year, snapshot=None) already picks latest snapshot internally in your project
     if snapshot_dir is None:
         return target_paths(year=year, snapshot=None)
+
     snapshot_dir = snapshot_dir if snapshot_dir.is_absolute() else (REPO_ROOT / snapshot_dir)
     return target_paths(year=year, snapshot=snapshot_dir.name)
 
 
+# -----------------------------
+# Main predict
+# -----------------------------
 def run_predict_season(
     year: int,
     topk: int = 5,
     models_dir: Path = Path("models"),
     pretrained_manifest: Optional[Path] = None,
     snapshot_dir: Optional[Path] = None,
+    run_id: Optional[str] = None,
 ) -> Path:
     models_dir = models_dir if models_dir.is_absolute() else (REPO_ROOT / models_dir)
 
@@ -156,15 +182,15 @@ def run_predict_season(
     out_dir = paths.predictions
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    # model resolution
+    # pretrained resolution (optional)
     pretrained: Optional[dict[str, PretrainedRef]] = None
     if pretrained_manifest is not None:
-        pretrained_manifest = pretrained_manifest if pretrained_manifest.is_absolute() else (REPO_ROOT / pretrained_manifest)
         pretrained = load_pretrained_manifest(pretrained_manifest)
 
-    run_id = None
+    # choose run_id ONLY if not pretrained
+    trained_run_id: Optional[str] = None
     if pretrained is None:
-        run_id = latest_run_id(models_dir)
+        trained_run_id = run_id if run_id else latest_run_id(models_dir)
 
     all_rows: list[pd.DataFrame] = []
     chosen: list[dict[str, Any]] = []
@@ -172,6 +198,9 @@ def run_predict_season(
     for award in AWARDS:
         award_l = award.lower().strip()
 
+        # -------------------------
+        # PRETRAINED PATH
+        # -------------------------
         if pretrained is not None:
             if award_l not in pretrained:
                 print(f"[WARN] no pretrained entry for award={award_l}")
@@ -190,6 +219,7 @@ def run_predict_season(
                 feature_set=ref.feature_set,
                 add_prev=True,
             )
+
             X = align_X(bundle.X, m)
             scores = predict_proba(m, X)
 
@@ -218,16 +248,17 @@ def run_predict_season(
             print(f"[OK] {award}: pretrained {ref.family} (top1={top1:.4f})")
             continue
 
-        # ---- non-pretrained path: choose best family by top1 ----
-        assert run_id is not None
+        # -------------------------
+        # TRAINED PATH (no pretrained)
+        # -------------------------
+        assert trained_run_id is not None
 
-        candidates: list[tuple[float, str, str, LoadedModel, pd.DataFrame]] = []
+        candidates: list[tuple[float, str, str, Path, pd.DataFrame]] = []
         for family, feature_set in (("baseline", "baseline"), ("tree", "tree")):
-            run_dir = models_dir / run_id / family / award
+            run_dir = models_dir / trained_run_id / family / award
             if not run_dir.exists():
                 continue
 
-            # resolve model file
             joblib_path = run_dir / "model.joblib"
             xgb_path = run_dir / "xgb_model.json"
             if xgb_path.exists():
@@ -263,18 +294,14 @@ def run_predict_season(
             res = res.sort_values("score", ascending=False).reset_index(drop=True)
 
             top1 = float(res.loc[0, "score"]) if len(res) else float("nan")
-            candidates.append((top1, family, fmt, m, res))
+            candidates.append((top1, family, fmt, model_path, res))
 
         if not candidates:
-            print(f"[WARN] no model available for {award} in run {run_id}")
+            print(f"[WARN] no model available for {award} in run {trained_run_id}")
             continue
 
         candidates.sort(key=lambda t: t[0], reverse=True)
-        best_top1, best_family, best_fmt, _, best_res = candidates[0]
-
-        # correct model_path for meta
-        run_dir = models_dir / run_id / best_family / award
-        best_model_path = (run_dir / "xgb_model.json") if best_fmt == "xgb_json" else (run_dir / "model.joblib")
+        best_top1, best_family, best_fmt, best_model_path, best_res = candidates[0]
 
         chosen.append(
             {
@@ -305,7 +332,7 @@ def run_predict_season(
         "asof": paths.root.name.replace("asof_", ""),
         "built_on": str(date.today()),
         "models_dir": str(models_dir),
-        "run_id": run_id if run_id is not None else "pretrained",
+        "run_id": trained_run_id if pretrained is None else "pretrained",
         "topk": topk,
         "chosen": chosen,
         "exports": {"all_awards_parquet": str(all_path)},
@@ -325,6 +352,7 @@ def main() -> int:
     p.add_argument("--models-dir", type=str, default="models")
     p.add_argument("--pretrained", type=str, default=None, help="Path to pretrained manifest JSON.")
     p.add_argument("--snapshot-dir", type=str, default=None, help="Explicit snapshot dir (data/target/.../asof_...).")
+    p.add_argument("--run-id", type=str, default=None, help="Force a specific trained run_id (YYYYMMDD_HHMMSS).")
     args = p.parse_args()
 
     run_predict_season(
@@ -333,6 +361,7 @@ def main() -> int:
         models_dir=Path(args.models_dir),
         pretrained_manifest=Path(args.pretrained) if args.pretrained else None,
         snapshot_dir=Path(args.snapshot_dir) if args.snapshot_dir else None,
+        run_id=args.run_id,
     )
     return 0
 

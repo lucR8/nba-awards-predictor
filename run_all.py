@@ -1,4 +1,3 @@
-# run_all.py
 from __future__ import annotations
 
 import argparse
@@ -6,12 +5,11 @@ import os
 import subprocess
 import sys
 from pathlib import Path
-from typing import List, Optional
+from typing import List
 
 REPO_ROOT = Path(__file__).resolve().parent
 SRC_ROOT = REPO_ROOT / "src"
 
-# Make src importable for THIS process too (not only subprocesses)
 if str(SRC_ROOT) not in sys.path:
     sys.path.insert(0, str(SRC_ROOT))
 
@@ -19,7 +17,6 @@ PYTHON = sys.executable
 
 
 def _build_env() -> dict:
-    """Environment with src/ on PYTHONPATH so `python -m awards_predictor...` works without pip install."""
     env = os.environ.copy()
     src = str(SRC_ROOT)
     existing = env.get("PYTHONPATH", "")
@@ -28,57 +25,55 @@ def _build_env() -> dict:
 
 
 def run(cmd: List[str]) -> None:
-    """Run a command from repository root with a consistent environment."""
     subprocess.check_call(cmd, cwd=str(REPO_ROOT), env=_build_env())
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(
-        description="Run full NBA Awards pipeline (fetch → build → train → leakage-check → predict → evaluate → plot)."
+    p = argparse.ArgumentParser(
+        description="Run NBA Awards pipeline (fetch → build → train → leakage-check → predict → evaluate → plot)."
     )
-    parser.add_argument("--year", type=int, default=2026, help="BRef season end year (default: 2026)")
-    parser.add_argument("--topk", type=int, default=5, help="Top-K predictions per award (default: 5)")
+    p.add_argument("--year", type=int, default=2026)
+    p.add_argument("--topk", type=int, default=5)
 
-    # NEW: pretrained models + snapshot
-    parser.add_argument(
+    # pretrained (optional)
+    p.add_argument(
         "--pretrained",
         type=str,
         default=None,
-        help="Path to pretrained models manifest JSON (e.g., models/pretrained/v1/models_manifest.json).",
+        help="Path to pretrained manifest JSON (e.g., models/pretrained/v1/models_manifest.json).",
     )
-    parser.add_argument(
+    p.add_argument(
         "--snapshot-dir",
         type=str,
         default=None,
         help="Optional explicit target snapshot dir (e.g., data/target/2026/asof_2026-01-26).",
     )
 
-    # Steps toggles
-    parser.add_argument("--skip-fetch", action="store_true", help="Skip target-season fetch step.")
-    parser.add_argument("--skip-build", action="store_true", help="Skip target-season build step.")
-    parser.add_argument("--skip-train", action="store_true", help="Skip training step.")
-    parser.add_argument("--skip-predict", action="store_true", help="Skip prediction step.")
+    # toggles
+    p.add_argument("--skip-fetch", action="store_true")
+    p.add_argument("--skip-build", action="store_true")
+    p.add_argument("--skip-train", action="store_true")
+    p.add_argument("--skip-predict", action="store_true")
 
-    # Leakage check (after train, before predict)
-    parser.add_argument("--skip-leakage-check", action="store_true", help="Skip leakage check.")
-    parser.add_argument("--leakage-strict", action="store_true", help="Force strict leakage mode.")
-    parser.add_argument("--no-leakage-strict", action="store_true", help="Only warn on leakage suspicion.")
-    parser.add_argument("--leakage-corr-threshold", type=float, default=0.95)
+    # leakage
+    p.add_argument("--skip-leakage-check", action="store_true")
+    p.add_argument("--leakage-strict", action="store_true")
+    p.add_argument("--no-leakage-strict", action="store_true")
+    p.add_argument("--leakage-corr-threshold", type=float, default=0.95)
 
-    # Offline evaluation
-    parser.add_argument("--evaluate", action="store_true", help="Run offline evaluation for report.")
-    parser.add_argument("--eval-out", type=str, default="reports/model_eval", help="Eval output dir.")
-    parser.add_argument("--val-years", type=int, default=2, help="Number of validation seasons (default: 2)")
-    parser.add_argument("--test-years", type=int, default=3, help="Number of test seasons (default: 3)")
+    # eval + plots
+    p.add_argument("--evaluate", action="store_true")
+    p.add_argument("--eval-out", type=str, default="reports/model_eval")
+    p.add_argument("--val-years", type=int, default=2)
+    p.add_argument("--test-years", type=int, default=3)
 
-    # Plots (optional)
-    parser.add_argument("--plot", action="store_true", help="Generate plots from evaluation metrics (requires --evaluate).")
-    parser.add_argument("--plot-out", type=str, default="", help="Plot output dir (default: <eval-out>/plots).")
+    p.add_argument("--plot", action="store_true")
+    p.add_argument("--plot-out", type=str, default="")
 
-    args = parser.parse_args()
+    args = p.parse_args()
 
-    year = args.year
-    topk = args.topk
+    year = int(args.year)
+    topk = int(args.topk)
 
     print("\n==============================")
     print(f"🏀 NBA AWARDS RUN ALL — {year}")
@@ -106,7 +101,7 @@ def main() -> None:
             ]
         )
 
-    # 3.5) LEAKAGE CHECK (only if we will predict)
+    # 3.5) LEAKAGE CHECK
     do_predict = not args.skip_predict
     do_leakage = (not args.skip_leakage_check) and do_predict
 
@@ -134,7 +129,6 @@ def main() -> None:
             table = build_training_table(df_hist, award=award, feature_set="baseline")
             X, y, meta = table.X, table.y, table.meta
 
-            # If split exists, check only TRAIN (otherwise check all)
             if isinstance(meta, pd.DataFrame) and "split" in meta.columns:
                 m_train = meta["split"].astype(str).str.lower() == "train"
                 Xc = X.loc[m_train]
@@ -157,10 +151,22 @@ def main() -> None:
             "--topk",
             str(topk),
         ]
+
         if args.pretrained:
+            print(f"[RUN_ALL] Using pretrained manifest: {args.pretrained}")
             cmd += ["--pretrained", args.pretrained]
+        else:
+            print("[RUN_ALL] Using latest TRAINED run in models/ (not pretrained).")
+            # Optional: if you maintain a pointer written by training
+            latest_file = REPO_ROOT / "models" / "LATEST_RUN_ID.txt"
+            if latest_file.exists():
+                rid = latest_file.read_text(encoding="utf-8").strip()
+                if rid:
+                    cmd += ["--run-id", rid]
+
         if args.snapshot_dir:
             cmd += ["--snapshot-dir", args.snapshot_dir]
+
         run(cmd)
 
     # 5) EVAL
@@ -201,7 +207,8 @@ def main() -> None:
     if args.evaluate:
         print(f"📊 Evaluation → {eval_out}")
     if args.plot:
-        print(f"🖼️  Plots → {Path(args.plot_out) if args.plot_out else (Path(args.eval_out)/'plots')}")
+        out = Path(args.plot_out) if args.plot_out else (Path(args.eval_out) / "plots")
+        print(f"🖼️  Plots → {out}")
 
 
 if __name__ == "__main__":
