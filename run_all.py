@@ -6,7 +6,7 @@ import os
 import subprocess
 import sys
 from pathlib import Path
-from typing import List
+from typing import List, Optional
 
 REPO_ROOT = Path(__file__).resolve().parent
 SRC_ROOT = REPO_ROOT / "src"
@@ -38,6 +38,20 @@ def main() -> None:
     )
     parser.add_argument("--year", type=int, default=2026, help="BRef season end year (default: 2026)")
     parser.add_argument("--topk", type=int, default=5, help="Top-K predictions per award (default: 5)")
+
+    # NEW: pretrained models + snapshot
+    parser.add_argument(
+        "--pretrained",
+        type=str,
+        default=None,
+        help="Path to pretrained models manifest JSON (e.g., models/pretrained/v1/models_manifest.json).",
+    )
+    parser.add_argument(
+        "--snapshot-dir",
+        type=str,
+        default=None,
+        help="Optional explicit target snapshot dir (e.g., data/target/2026/asof_2026-01-26).",
+    )
 
     # Steps toggles
     parser.add_argument("--skip-fetch", action="store_true", help="Skip target-season fetch step.")
@@ -80,8 +94,17 @@ def main() -> None:
 
     # 3) TRAIN
     if not args.skip_train:
-        run([PYTHON, "-m", "awards_predictor.train.train_awards",
-             "--val-years", str(args.val_years), "--test-years", str(args.test_years)])
+        run(
+            [
+                PYTHON,
+                "-m",
+                "awards_predictor.train.train_awards",
+                "--val-years",
+                str(args.val_years),
+                "--test-years",
+                str(args.test_years),
+            ]
+        )
 
     # 3.5) LEAKAGE CHECK (only if we will predict)
     do_predict = not args.skip_predict
@@ -111,35 +134,51 @@ def main() -> None:
             table = build_training_table(df_hist, award=award, feature_set="baseline")
             X, y, meta = table.X, table.y, table.meta
 
-            # If split is available, check leakage only on TRAIN
+            # If split exists, check only TRAIN (otherwise check all)
             if isinstance(meta, pd.DataFrame) and "split" in meta.columns:
                 m_train = meta["split"].astype(str).str.lower() == "train"
-                Xc = X.loc[m_train] if hasattr(X, "loc") else X[m_train.values]
-                yc = y.loc[m_train] if hasattr(y, "loc") else y[m_train.values]
+                Xc = X.loc[m_train]
+                yc = y.loc[m_train]
             else:
                 Xc, yc = X, y
 
-            if hasattr(Xc, "columns"):
-                check_leakage(Xc, yc, award=award, corr_threshold=corr_thr, strict=strict)
-            else:
-                print(f"[LEAKAGE] skip (X not DataFrame) award={award}")
+            check_leakage(Xc, yc, award=award, corr_threshold=corr_thr, strict=strict)
 
         print("✅ Leakage check passed")
 
     # 4) PREDICT
     if do_predict:
-        run([PYTHON, "-m", "awards_predictor.predict.predict_season",
-             "--year", str(year), "--topk", str(topk)])
+        cmd = [
+            PYTHON,
+            "-m",
+            "awards_predictor.predict.predict_season",
+            "--year",
+            str(year),
+            "--topk",
+            str(topk),
+        ]
+        if args.pretrained:
+            cmd += ["--pretrained", args.pretrained]
+        if args.snapshot_dir:
+            cmd += ["--snapshot-dir", args.snapshot_dir]
+        run(cmd)
 
     # 5) EVAL
-    did_eval = False
     eval_out = Path(args.eval_out)
     if args.evaluate:
-        run([PYTHON, "-m", "awards_predictor.train.evaluate_models",
-             "--out-dir", str(eval_out),
-             "--val-years", str(args.val_years),
-             "--test-years", str(args.test_years)])
-        did_eval = True
+        run(
+            [
+                PYTHON,
+                "-m",
+                "awards_predictor.train.evaluate_models",
+                "--out-dir",
+                str(eval_out),
+                "--val-years",
+                str(args.val_years),
+                "--test-years",
+                str(args.test_years),
+            ]
+        )
 
     # 6) PLOTS
     if args.evaluate and args.plot:
@@ -156,8 +195,6 @@ def main() -> None:
                 "--by-award",
             ]
         )
-
-
 
     print("\n✅ RUN ALL COMPLETED")
     print(f"📂 Predictions → data/target/{year}/asof_*/predictions/")
