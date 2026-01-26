@@ -46,6 +46,10 @@ fetch_logs/**
 # ============================================================
 models/**
 
+# Allow pretrained models for users
+!models/pretrained/
+!models/pretrained/**
+
 
 # ============================================================
 # Scripts (private / local scrapers)
