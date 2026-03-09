@@ -8,7 +8,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from scripts._bootstrap import *  # noqa: F401,F403  (adds src/ to sys.path)
+from scripts._bootstrap import *  
 
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer

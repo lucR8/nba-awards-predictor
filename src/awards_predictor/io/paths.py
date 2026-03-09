@@ -123,7 +123,6 @@ def target_paths(
         build_players_final=build / "players" / "final" / "all_years_final.parquet",
         build_players_with_bio=build / "players" / "final" / "all_years_with_bio.parquet",
 
-        # depending on your fetch script naming (meta.json or fetch_meta.json)
         fetch_meta=(snap_dir / "meta.json") if (snap_dir / "meta.json").exists() else (snap_dir / "fetch_meta.json"),
         build_meta=build / "meta.json",
     )

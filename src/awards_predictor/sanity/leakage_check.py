@@ -114,15 +114,15 @@ def check_leakage(
         print(f"[LEAKAGE] OK ({award})")
         return
 
-    msg = [f"\n🚨 DATA LEAKAGE DETECTED for award={award}"]
+    msg = [f"\nDATA LEAKAGE DETECTED for award={award}"]
 
     if name_leaks:
-        msg.append("\n🔴 Name-based leakage columns:")
+        msg.append("\nName-based leakage columns:")
         for c in name_leaks:
             msg.append(f"  - {c}")
 
     if corr_leaks:
-        msg.append(f"\n🟠 High correlation leakage (|corr| ≥ {corr_threshold}):")
+        msg.append(f"\nHigh correlation leakage (|corr| ≥ {corr_threshold}):")
         for c, v in corr_leaks[:10]:
             msg.append(f"  - {c}: corr={v:.3f}")
 

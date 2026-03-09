@@ -6,12 +6,12 @@ labels: bug
 assignees: ""
 ---
 
-## 🐛 Bug description
+## Bug description
 Clearly describe the issue you encountered.
 
 ---
 
-## 🔁 Steps to reproduce
+## Steps to reproduce
 Provide the minimal steps required to reproduce the bug:
 1. ...
 2. ...
@@ -19,17 +19,17 @@ Provide the minimal steps required to reproduce the bug:
 
 ---
 
-## ✅ Expected behavior
+## Expected behavior
 Describe what you expected to happen.
 
 ---
 
-## ❌ Actual behavior
+## Actual behavior
 Describe what actually happened.
 
 ---
 
-## 📋 Logs / error messages
+## Logs / error messages
 Please paste relevant logs or error messages here (if any):
 ```text
 <logs>
@@ -37,7 +37,7 @@ Please paste relevant logs or error messages here (if any):
 
 ---
 
-## 💻 Environment
+## Environment
 - Operating system:
 - Python version:
 - Command executed:
@@ -45,5 +45,5 @@ Please paste relevant logs or error messages here (if any):
 
 ---
 
-## 📎 Additional context
+## Additional context
 Screenshots, figures, stack traces, or dataset excerpts that may help diagnose the issue.

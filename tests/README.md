@@ -1,4 +1,4 @@
-# 🧪 Tests — NBA Awards Predictor
+#  Tests — NBA Awards Predictor
 
 This directory contains **lightweight, deterministic tests** designed to validate
 the **critical invariants** of the NBA Awards Predictor pipeline.
@@ -9,14 +9,14 @@ remain valid over time.
 
 ---
 
-## 🎯 Testing philosophy
+## Testing philosophy
 
 This project follows a **research-oriented testing strategy**:
 
-- ✅ Test *invariants*, not performance
-- ✅ No dependency on real NBA datasets
-- ✅ No model training inside tests
-- ✅ Fully deterministic and fast (< 1s)
+- Test *invariants*, not performance
+- No dependency on real NBA datasets
+- No model training inside tests
+- Fully deterministic and fast (< 1s)
 
 This makes the test suite:
 - stable across environments,
@@ -25,7 +25,7 @@ This makes the test suite:
 
 ---
 
-## 📂 Test files
+## Test files
 
 ### `test_percentiles.py`
 Validates feature engineering primitives:
@@ -55,16 +55,16 @@ These tests ensure that domain logic and evaluation framing remain consistent.
 
 ---
 
-## ▶️ How to run the tests
+## How to run the tests
 
-### 1️⃣ Install dependencies
+### Install dependencies
 From the repository root:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2️⃣ Run all tests
+### Run all tests
 
 ```bash
 pytest -q
@@ -77,7 +77,7 @@ X passed in <1s
 
 ---
 
-## 🔁 Continuous Integration (CI)
+## Continuous Integration (CI)
 
 Tests are automatically executed via GitHub Actions on:
 - every push to `main`
@@ -90,7 +90,7 @@ See:
 
 ---
 
-## 🚫 What is intentionally NOT tested
+## What is intentionally NOT tested
 
 - End-to-end training pipelines
 - Exact AUC / accuracy values
@@ -104,7 +104,7 @@ These aspects are:
 
 ---
 
-## ✅ Summary
+## Summary
 
 If these tests pass, you can be confident that:
 - no obvious data leakage was introduced,

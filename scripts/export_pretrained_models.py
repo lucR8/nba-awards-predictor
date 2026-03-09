@@ -82,7 +82,7 @@ def export_from_prediction_meta(
         )
 
     manifest = {
-        "version": out_root.name,  # e.g. v1
+        "version": out_root.name,  
         "source": {
             "prediction_meta": str(prediction_meta.as_posix()),
             "run_id": data.get("run_id"),

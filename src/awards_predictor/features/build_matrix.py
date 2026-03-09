@@ -56,11 +56,11 @@ def _infer_end_year(season_val) -> Optional[int]:
         b = b.strip()
 
         # 2025-26 -> 2026
-        if len(b) == 2 and a.isdigit():
+        if len(b) == 2 and a.isdigit() and len(a) == 4:
             return int(a[:2] + b)
 
         # 2025-2026 -> 2026
-        if b.isdigit():
+        if b.isdigit() and len(b) == 4:
             return int(b)
 
     return None
@@ -72,7 +72,7 @@ def _normalize_schema(df: pd.DataFrame) -> pd.DataFrame:
       - Player
       - season (end-year int)
       - Tm (team abbrev)
-    This function is intentionally conservative: it does NOT invent missing Player/Tm.
+    Conservative: does NOT invent missing Player/Tm.
     """
     x = df.copy()
 
@@ -90,10 +90,14 @@ def _normalize_schema(df: pd.DataFrame) -> pd.DataFrame:
                 x = x.rename(columns={alt: "season"})
                 break
 
+    # Normalize season to end-year int if present
     if "season" in x.columns:
         x["season"] = x["season"].apply(_infer_end_year)
-        # CRITICAL: drop rows where season cannot be parsed
+
+        # drop rows where season cannot be parsed
         x = x[~pd.isna(x["season"])].copy()
+
+        # final cast
         x["season"] = _safe_num(x["season"]).astype("Int64")
 
     return x
@@ -135,6 +139,7 @@ def add_prev_features(
             if c not in {player_col, season_col, "Tm", "__row_id"}
             and pd.api.types.is_numeric_dtype(out[c])
             and not str(c).startswith("prev_")
+            and not str(c).startswith("delta_")
         ]
 
     prev_block = out.groupby(player_col, sort=False)[prev_cols].shift(1)
@@ -150,6 +155,7 @@ def add_delta_features(
 ) -> pd.DataFrame:
     """
     Compute delta_{c} = c - prev_c for all numeric_cols in one concat (no fragmentation).
+    NOTE: numeric_cols should be "current" features (NOT prev_*, NOT delta_*).
     """
     out = df.copy()
 
@@ -191,7 +197,7 @@ def build_target_matrix(
     Build X for a season (target_year) without labels.
 
     Key points:
-      - concat (hist + target) BEFORE prev_ so target rows can see N-1 season
+      - concat (hist + target) BEFORE prev_* so target rows can see N-1 season
       - for MIP, add delta_* and include them into X
       - keep __row_id on target rows for label recovery
     """
@@ -225,6 +231,10 @@ def build_target_matrix(
     if add_prev:
         if prev_cols is None:
             prev_cols = fs_base.resolve_numeric(df_all.columns)
+
+            # avoid accidental inclusion of derived columns
+            prev_cols = [c for c in prev_cols if not str(c).startswith("prev_") and not str(c).startswith("delta_")]
+
             # ensure MP proxies exist if present (MIP rules often need them)
             for must in ("MP", "pct_MP"):
                 if must in df_all.columns and must not in prev_cols:
@@ -235,7 +245,7 @@ def build_target_matrix(
     # isolate target season rows
     df_t = df_all[df_all["season"] == int(target_year)].copy()
 
-    # CRITICAL: if target_year not present, return empty bundle (caller can skip)
+    # if target_year not present, return empty bundle 
     if df_t.empty:
         return MatrixBundle(
             X=pd.DataFrame(),
@@ -257,13 +267,20 @@ def build_target_matrix(
     # MIP: add deltas vs prev season and include them in X
     fs_final = fs_base
     if award.lower().strip() == "mip":
-        num_cols_for_delta = fs_base.resolve_numeric(df_t.columns)
-        df_t = add_delta_features(df_t, numeric_cols=num_cols_for_delta, prefix="delta_")
+        base_numeric = fs_base.resolve_numeric(df_t.columns)
+        # IMPORTANT: deltas should be computed from current columns only (not prev_*)
+        base_numeric = [
+            c for c in base_numeric
+            if not str(c).startswith("prev_")
+            and not str(c).startswith("delta_")
+        ]
 
-        delta_cols = [f"delta_{c}" for c in num_cols_for_delta if f"delta_{c}" in df_t.columns]
+        df_t = add_delta_features(df_t, numeric_cols=base_numeric, prefix="delta_")
+
+        delta_cols = [f"delta_{c}" for c in base_numeric if f"delta_{c}" in df_t.columns]
         fs_final = FeatureSet(
             name=f"{fs_base.name}_mip_delta",
-            numeric=list(dict.fromkeys(num_cols_for_delta + delta_cols)),
+            numeric=list(dict.fromkeys(base_numeric + [f"prev_{c}" for c in base_numeric if f"prev_{c}" in df_t.columns] + delta_cols)),
             categorical=fs_base.resolve_categorical(df_t.columns),
         )
 

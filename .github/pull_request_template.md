@@ -1,11 +1,11 @@
-# 🔁 Pull Request
+# Pull Request
 
-## 📝 Summary
+## Summary
 Provide a concise summary of what this PR changes and why.
 
 ---
 
-## 🔨 Changes included
+## Changes included
 Select all that apply:
 - [ ] New feature
 - [ ] Bug fix
@@ -16,7 +16,7 @@ Select all that apply:
 
 ---
 
-## 🧪 How was this tested?
+## How was this tested?
 Describe how you validated the changes (commands, scripts, notebooks):
 
 ```bash
@@ -27,7 +27,7 @@ If no tests were run, explain why.
 
 ---
 
-## 🔍 Reproducibility & data safety checklist
+## Reproducibility & data safety checklist
 - [ ] No raw or generated datasets were committed
 - [ ] No secrets / API keys were committed
 - [ ] Changes are deterministic (seeded) where relevant
@@ -36,5 +36,5 @@ If no tests were run, explain why.
 
 ---
 
-## 📎 Notes (optional)
+## Notes (optional)
 Any additional context useful for reviewers (links, figures, references, screenshots).

@@ -76,7 +76,7 @@ def main() -> None:
     topk = int(args.topk)
 
     print("\n==============================")
-    print(f"🏀 NBA AWARDS RUN ALL — {year}")
+    print(f" NBA AWARDS RUN ALL — {year}")
     print("==============================")
 
     # 1) FETCH
@@ -107,7 +107,7 @@ def main() -> None:
 
     if do_leakage:
         print("\n==============================")
-        print("🧪 LEAKAGE CHECK (pre-prediction)")
+        print(" LEAKAGE CHECK (pre-prediction)")
         print("==============================")
 
         import pandas as pd
@@ -138,7 +138,7 @@ def main() -> None:
 
             check_leakage(Xc, yc, award=award, corr_threshold=corr_thr, strict=strict)
 
-        print("✅ Leakage check passed")
+        print(" Leakage check passed")
 
     # 4) PREDICT
     if do_predict:
@@ -202,13 +202,13 @@ def main() -> None:
             ]
         )
 
-    print("\n✅ RUN ALL COMPLETED")
-    print(f"📂 Predictions → data/target/{year}/asof_*/predictions/")
+    print("\n RUN ALL COMPLETED")
+    print(f" Predictions → data/target/{year}/asof_*/predictions/")
     if args.evaluate:
-        print(f"📊 Evaluation → {eval_out}")
+        print(f" Evaluation → {eval_out}")
     if args.plot:
         out = Path(args.plot_out) if args.plot_out else (Path(args.eval_out) / "plots")
-        print(f"🖼️  Plots → {out}")
+        print(f"  Plots → {out}")
 
 
 if __name__ == "__main__":

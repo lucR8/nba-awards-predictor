@@ -7,7 +7,7 @@ but external contributions are welcome as long as they follow the guidelines bel
 
 ---
 
-## 🚀 Contribution workflow
+## Contribution workflow
 
 1. Fork the repository
 2. Create a dedicated branch:
@@ -27,7 +27,7 @@ refactor: simplify eligibility rules for SMOY
 
 ---
 
-## 🧪 Tests
+## Tests
 
 Before submitting a Pull Request, make sure all tests pass:
 ```bash
@@ -38,7 +38,7 @@ If you add new functionality, please include at least one minimal test under `te
 
 ---
 
-## 🧹 Code quality guidelines
+## Code quality guidelines
 
 - Respect the existing project structure (`src/awards_predictor/`)
 - Prefer explicit and readable code over clever shortcuts
@@ -53,7 +53,7 @@ flake8 src
 
 ---
 
-## 📦 Project structure
+## Project structure
 
 ```
 src/awards_predictor/
@@ -68,6 +68,6 @@ Raw datasets must **never** be committed.
 
 ---
 
-## 📬 Questions
+## Questions
 
 Please open a GitHub Issue for any question or suggestion.

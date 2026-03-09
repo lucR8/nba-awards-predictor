@@ -6,7 +6,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from scripts._bootstrap import *  # noqa: F401,F403  (adds src/ to sys.path)
+from scripts._bootstrap import *
 
 from sklearn.impute import SimpleImputer
 from sklearn.linear_model import LogisticRegression
@@ -144,7 +144,6 @@ def main() -> int:
 
     ap.add_argument("--penalty", choices=["l2", "l1", "elasticnet"], default="l2")
 
-    # ONE single definition (no conflict)
     ap.add_argument(
         "--l1-ratio",
         type=float,

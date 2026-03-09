@@ -7,7 +7,7 @@ Objectif : exécuter l’inférence (prédire une saison future / en cours) à p
 - d’un snapshot *target* (fetch + build) en `data/target/<year>/asof_<date>/...`
 - de modèles entraînés et exportés dans `data/experiments/...`
 
-> ⚠️ Aucun `pip install -e .` requis : les scripts bootstrappent automatiquement le dossier `src/`
+> Aucun `pip install -e .` requis : les scripts bootstrappent automatiquement le dossier `src/`
 > dans le `PYTHONPATH`. Le projet est **directement runnable après clonage GitHub**.
 
 ---
@@ -88,11 +88,11 @@ Fichiers générés :
 
 ## 5) Hypothèses & garanties
 
-- ❌ **Pas de look-ahead bias** (features calculées à date *as-of*).
-- ✅ Les features `prev_*` pour la saison target sont calculées à partir :
+- **Pas de look-ahead bias** (features calculées à date *as-of*).
+- Les features `prev_*` pour la saison target sont calculées à partir :
   - historique 1996–2025
   - + snapshot target partiel
-- 📦 Chemins **repo-relatifs**, compatibles GitHub / CI / reviewers.
+- Chemins **repo-relatifs**, compatibles GitHub / CI / reviewers.
 
 ---
 

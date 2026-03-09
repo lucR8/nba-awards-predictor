@@ -110,14 +110,13 @@ class FeatureSet:
         return intersect_features(df_columns, self.categorical)
 
 
-# ============================================================
-# Feature sets used in the project (V1 notebook-aligned)
-# ============================================================
+# Feature sets used in the project 
+# 
 
 def build_baseline_feature_set(df_columns: Iterable[str]) -> FeatureSet:
     df_cols = set(map(str, df_columns))
 
-    # Baseline: percentiles only (notebook-aligned) + Pos categorical if present
+    # Baseline: percentiles only + Pos categorical if present
     numeric = infer_percentile_cols(df_cols)
 
     return FeatureSet(

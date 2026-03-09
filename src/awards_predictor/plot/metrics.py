@@ -60,7 +60,6 @@ def _legend_outside(ax) -> None:
 
 
 def plot_auc_slope(df_award: pd.DataFrame, out_dir: Path, award: str) -> None:
-    # slope chart: val -> test per model
     d = df_award[["model", "val_auc", "test_auc"]].dropna()
     if d.empty:
         return
@@ -131,7 +130,6 @@ def plot_mean_winner_rank(df_award: pd.DataFrame, out_dir: Path, award: str) -> 
         return
 
     plt.figure(figsize=(9.5, 4.8))
-    # FIX: no palette without hue (seaborn FutureWarning)
     ax = sns.stripplot(
         data=d,
         x="test_mean_winner_rank",
@@ -159,7 +157,6 @@ def plot_topk_table(df_award: pd.DataFrame, out_dir: Path, award: str, k: int = 
 
     d = d.sort_values("test_auc", ascending=False).head(k)
 
-    # nicer formatting
     fmt = d.copy()
     for c in fmt.columns:
         if c == "model":
@@ -190,7 +187,7 @@ def plot_summary_overview(df: pd.DataFrame, out_dir: Path) -> None:
     best = (
         df.dropna(subset=["test_auc"])
         .sort_values(["award", "test_auc"], ascending=[True, False])
-        .groupby("award", as_index=False, observed=False)  # FIX: silence pandas FutureWarning
+        .groupby("award", as_index=False, observed=False)  
         .head(1)
     )
     if best.empty:
@@ -222,7 +219,6 @@ def main() -> int:
 
     sns.set_theme(style="whitegrid", context="talk")
 
-    # always write a clean overview summary too
     plot_summary_overview(df, out_dir)
 
     if args.by_award:
@@ -238,7 +234,6 @@ def main() -> int:
 
         print(f"[OK] wrote award plots to: {out_dir.resolve()}")
     else:
-        # fallback: only overview
         print(f"[OK] wrote summary plots to: {(out_dir / '_summary').resolve()}")
 
     return 0

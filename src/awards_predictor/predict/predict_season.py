@@ -17,7 +17,7 @@ from awards_predictor.io.paths import season_str, target_paths
 REPO_ROOT = Path(__file__).resolve().parents[3]
 
 # Only timestamp training runs (ignore "pretrained", "tmp", etc.)
-_RUN_ID_RE = re.compile(r"^\d{8}_\d{6}$")  # ex: 20260126_003419
+_RUN_ID_RE = re.compile(r"^\d{8}_\d{6}$")  
 
 
 @dataclass(frozen=True)
@@ -36,9 +36,7 @@ class PretrainedRef:
     model_path: Path
 
 
-# -----------------------------
 # Pretrained manifest
-# -----------------------------
 def load_pretrained_manifest(manifest_path: Path) -> dict[str, PretrainedRef]:
     manifest_path = manifest_path if manifest_path.is_absolute() else (REPO_ROOT / manifest_path)
     data = json.loads(manifest_path.read_text(encoding="utf-8"))
@@ -56,9 +54,8 @@ def load_pretrained_manifest(manifest_path: Path) -> dict[str, PretrainedRef]:
     return out
 
 
-# -----------------------------
 # Run resolution
-# -----------------------------
+# 
 def latest_run_id(models_dir: Path) -> str:
     models_dir = models_dir if models_dir.is_absolute() else (REPO_ROOT / models_dir)
     candidates = [p for p in models_dir.iterdir() if p.is_dir() and _RUN_ID_RE.match(p.name)]
@@ -70,9 +67,7 @@ def latest_run_id(models_dir: Path) -> str:
     return max(candidates, key=lambda p: p.name).name
 
 
-# -----------------------------
 # Model loading
-# -----------------------------
 def _try_load_sklearn(model_path: Path) -> Optional[LoadedModel]:
     try:
         import joblib  # type: ignore
@@ -118,24 +113,40 @@ def load_model_from_path(model_path: Path) -> LoadedModel:
 
 
 def align_X(X: pd.DataFrame, model: LoadedModel) -> pd.DataFrame:
+    """
+    Align target-season matrix to training feature_names without pandas fragmentation.
+
+    - adds missing columns filled with 0
+    - drops extras
+    - preserves training order
+    - returns empty DF if X empty
+    """
+    if X is None or X.empty:
+        return pd.DataFrame()
+
     if not model.feature_names:
         return X
 
-    cols = model.feature_names
-    X2 = X.copy()
-    for c in cols:
-        if c not in X2.columns:
-            X2[c] = 0.0
-    return X2[cols]
+    cols = list(model.feature_names)
+    X2 = X.reindex(columns=cols, fill_value=0.0)
+
+    # Safe: most models expect numeric arrays; keep coercion lightweight
+    X2 = X2.apply(pd.to_numeric, errors="coerce")
+
+    return X2
 
 
 def predict_proba(model: LoadedModel, X: pd.DataFrame) -> pd.Series:
+    if X is None or X.empty:
+        return pd.Series(dtype=float)
+
     if model.model_type == "sklearn":
         proba = model.model.predict_proba(X)[:, 1]
         return pd.Series(proba, index=X.index)
 
     if model.model_type == "xgboost":
         import xgboost as xgb  # type: ignore
+
         dmat = xgb.DMatrix(X, feature_names=list(X.columns))
         p = model.model.predict(dmat)
         return pd.Series(p, index=X.index)
@@ -143,9 +154,8 @@ def predict_proba(model: LoadedModel, X: pd.DataFrame) -> pd.Series:
     raise RuntimeError(f"Unsupported model_type={model.model_type}")
 
 
-# -----------------------------
 # Snapshot resolution
-# -----------------------------
+# 
 def _resolve_snapshot_paths(year: int, snapshot_dir: Optional[Path]) -> Any:
     if snapshot_dir is None:
         return target_paths(year=year, snapshot=None)
@@ -178,6 +188,25 @@ def run_predict_season(
     df_hist = pd.read_parquet(HIST_ENRICHED_PARQUET)
 
     rookies_df = pd.read_csv(paths.raw_rookies) if paths.raw_rookies.exists() else None
+    
+    if rookies_df is not None and not rookies_df.empty:
+        # tolerate different column names
+        rookie_player_col = None
+        for c in ["Player", "player", "PLAYER", "name"]:
+            if c in rookies_df.columns:
+                rookie_player_col = c
+                break
+
+        if rookie_player_col is not None and "Player" in df_target.columns:
+            rookie_names = set(rookies_df[rookie_player_col].astype(str).str.strip())
+            df_target = df_target.copy()
+            df_target["is_rookie"] = (
+                df_target["Player"].astype(str).str.strip().isin(rookie_names)
+            ).astype(int)
+        else:
+            print("[WARN] rookies csv found but missing Player column (or df_target has no Player). ROY may be wrong.")
+    else:
+        print("[WARN] rookies list missing/empty. ROY may be wrong.")
 
     out_dir = paths.predictions
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -198,9 +227,7 @@ def run_predict_season(
     for award in AWARDS:
         award_l = award.lower().strip()
 
-        # -------------------------
         # PRETRAINED PATH
-        # -------------------------
         if pretrained is not None:
             if award_l not in pretrained:
                 print(f"[WARN] no pretrained entry for award={award_l}")
@@ -220,8 +247,19 @@ def run_predict_season(
                 add_prev=True,
             )
 
+            if bundle.X is None or bundle.X.empty:
+                print(f"[WARN] {award_l}: empty target matrix after eligibility -> skipped")
+                continue
+
             X = align_X(bundle.X, m)
+            if X.empty:
+                print(f"[WARN] {award_l}: empty X after align -> skipped")
+                continue
+
             scores = predict_proba(m, X)
+            if scores.empty:
+                print(f"[WARN] {award_l}: empty scores -> skipped")
+                continue
 
             res = bundle.meta.copy()
             res["award"] = award
@@ -248,9 +286,7 @@ def run_predict_season(
             print(f"[OK] {award}: pretrained {ref.family} (top1={top1:.4f})")
             continue
 
-        # -------------------------
         # TRAINED PATH (no pretrained)
-        # -------------------------
         assert trained_run_id is not None
 
         candidates: list[tuple[float, str, str, Path, pd.DataFrame]] = []
@@ -283,8 +319,16 @@ def run_predict_season(
                 add_prev=True,
             )
 
+            if bundle.X is None or bundle.X.empty:
+                continue
+
             X = align_X(bundle.X, m)
+            if X.empty:
+                continue
+
             scores = predict_proba(m, X)
+            if scores.empty:
+                continue
 
             res = bundle.meta.copy()
             res["award"] = award
@@ -297,7 +341,7 @@ def run_predict_season(
             candidates.append((top1, family, fmt, model_path, res))
 
         if not candidates:
-            print(f"[WARN] no model available for {award} in run {trained_run_id}")
+            print(f"[WARN] no usable model (or empty matrix) for {award} in run {trained_run_id}")
             continue
 
         candidates.sort(key=lambda t: t[0], reverse=True)
@@ -319,7 +363,7 @@ def run_predict_season(
         print(f"[OK] {award}: chose {best_family} (top1={best_top1:.4f})")
 
     if not all_rows:
-        raise RuntimeError("No predictions produced.")
+        raise RuntimeError("No predictions produced (all awards skipped).")
 
     all_df = pd.concat(all_rows, ignore_index=True)
     all_path = out_dir / f"all_awards_top{topk}.parquet"
@@ -339,7 +383,7 @@ def run_predict_season(
     }
     (out_dir / "prediction_meta.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")
 
-    print("\n✅ Prediction completed")
+    print("\nPrediction completed")
     print("Outputs:", out_dir)
     print("All awards:", all_path)
     return out_dir

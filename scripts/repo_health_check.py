@@ -88,20 +88,20 @@ def main() -> int:
 
     missing_required = report["required_missing"]
     if missing_required:
-        print("\n❌ Missing REQUIRED items:")
+        print("\nMissing REQUIRED items:")
         for m in missing_required:
             print(f"  - {m}")
         return 1
 
-    print("\n✅ Required repository structure looks good.")
+    print("\nRequired repository structure looks good.")
 
     if opt_missing:
-        print("\nℹ️ Optional items missing (fine for an academic project):")
+        print("\nOptional items missing (fine for an academic project):")
         for m in opt_missing:
             print(f"  - {m}")
 
     if gen_missing:
-        print("\nℹ️ Generated dirs not present yet (expected until you run evaluation):")
+        print("\nGenerated dirs not present yet (expected until you run evaluation):")
         for m in gen_missing:
             print(f"  - {m}")
 

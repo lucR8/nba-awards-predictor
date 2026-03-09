@@ -6,11 +6,10 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from scripts._bootstrap import *  # noqa: F401,F403  (adds src/ to sys.path)
+from scripts._bootstrap import *  
 
 import warnings
 
-# Silence sklearn 1.8+ FutureWarning about LogisticRegression(penalty=...)
 warnings.filterwarnings(
     "ignore",
     category=FutureWarning,
@@ -108,8 +107,8 @@ def make_model(model_name: str, seed: int = 42):
             l1_ratio=1.0,          # == L1
             C=1.0,
             solver="saga",
-            max_iter=1500,         # baisse pour éviter les runs interminables
-            tol=1e-2,              # tol plus large = converge plus vite
+            max_iter=1500,         
+            tol=1e-2,              
             class_weight="balanced",
             random_state=seed,
         )
@@ -202,7 +201,6 @@ def main() -> int:
         help="Minimum number of positives required in a train subset.",
     )
 
-    # ✅ NEW: multi-run averaging for report-quality curves
     ap.add_argument(
         "--n-runs",
         type=int,
@@ -257,7 +255,7 @@ def main() -> int:
     fracs = [float(x) for x in args.fracs.split(",")]
     rows: list[dict] = []
 
-    # pre-coerce val once (same columns/order)
+    # pre-coerce val once 
     X_val_num = _ensure_numeric_df(X_val)
 
     for frac in fracs:
@@ -272,7 +270,6 @@ def main() -> int:
         # numeric coercion (strings -> NaN) then imputer in pipeline
         X_tr = _ensure_numeric_df(X_tr)
 
-        # guards: need both classes + enough positives
         y_arr = np.asarray(y_tr).ravel()
         n_pos = int((y_arr == 1).sum())
         n_neg = int((y_arr == 0).sum())
@@ -352,10 +349,8 @@ def main() -> int:
             rows.append(
                 dict(
                     **base_row,
-                    # legacy cols (so old plotters still work)
                     train_auc=train_mean,
                     val_auc=val_mean,
-                    # report-ready stats
                     train_auc_mean=train_mean,
                     train_auc_std=train_std,
                     val_auc_mean=val_mean,

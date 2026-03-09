@@ -6,18 +6,18 @@ labels: enhancement
 assignees: ""
 ---
 
-## 🎯 Problem statement
+## Problem statement
 Describe the problem or limitation you are trying to address.
 Why is this feature needed?
 
 ---
 
-## 💡 Proposed solution
+## Proposed solution
 Describe clearly the feature or improvement you would like to see.
 
 ---
 
-## 🧠 Rationale / motivation
+## Rationale / motivation
 Explain why this feature makes sense in the context of the project:
 - data engineering
 - modeling
@@ -27,7 +27,7 @@ Explain why this feature makes sense in the context of the project:
 
 ---
 
-## 🛠 Possible implementation (optional)
+## Possible implementation (optional)
 If you have an idea, outline how this feature could be implemented:
 - affected modules
 - new scripts or functions
@@ -35,11 +35,11 @@ If you have an idea, outline how this feature could be implemented:
 
 ---
 
-## 📈 Expected impact
+## Expected impact
 How would this feature improve the project?
 (e.g. better evaluation, cleaner pipeline, improved realism, clearer results)
 
 ---
 
-## 📎 Additional context
+## Additional context
 Links, references, figures, or related discussions (if any).

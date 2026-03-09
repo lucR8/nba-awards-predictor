@@ -60,7 +60,7 @@ def load_top_features_csv(path: Path) -> pd.DataFrame:
     if feat_col is None:
         raise ValueError(f"Could not find a feature column in {path}. Columns={df.columns.tolist()}")
 
-    # Find value column (importance)
+    # Find value column 
     val_col = None
     std_col = None
 
@@ -148,7 +148,6 @@ def make_auc_val_to_test_slope(metrics_df: pd.DataFrame, out_png: Path):
     plt.close(fig)
 
 def make_ranking_metrics_dotplot(metrics_df: pd.DataFrame, out_png: Path):
-    # Long form: one row per metric
     rows = []
     for metric, metric_name in RANKING_METRICS:
         tmp = metrics_df[["award", "model", metric]].copy()
@@ -158,7 +157,7 @@ def make_ranking_metrics_dotplot(metrics_df: pd.DataFrame, out_png: Path):
     df = pd.concat(rows, ignore_index=True)
 
     fig, ax = plt.subplots(figsize=(11, 6))
-    y_map = {m: i for i, m in enumerate([m for _, m in RANKING_METRICS][::-1])}  # top-to-bottom
+    y_map = {m: i for i, m in enumerate([m for _, m in RANKING_METRICS][::-1])} 
     # place metrics groups with offsets per award
     awards = sorted(df["award"].unique())
     metric_levels = [m for _, m in RANKING_METRICS][::-1]
@@ -195,7 +194,7 @@ def make_mean_winner_rank_strip(metrics_df: pd.DataFrame, out_png: Path):
 
     ax.set_xlabel("mean winner rank (test) — lower is better")
     ax.set_title("Mean winner rank across models (test)")
-    ax.invert_xaxis()  # optional: best on the right? if you prefer, remove this line
+    ax.invert_xaxis()  
     ax.legend(loc="center left", bbox_to_anchor=(1, 0.5))
     fig.tight_layout()
     fig.savefig(out_png, dpi=200)
@@ -211,13 +210,10 @@ def make_top_features_plots(
     best_map = select_best_model_per_award(metrics_df, criterion=criterion)
 
     for award, model in best_map.items():
-        # expected file pattern: top_features_{award}_{model}.csv
-        # your filenames include e.g. top_features_smoy_logreg_elasticnet.csv
         pattern = f"top_features_{award}_{model}.csv"
         candidates = list(top_features_dir.glob(pattern))
 
         if not candidates:
-            # fallback: sometimes you exported only some models; try any model for award
             candidates = list(top_features_dir.glob(f"top_features_{award}_*.csv"))
 
         if not candidates:
